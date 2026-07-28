@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rocky Mountain Mushroom Farm — Skip the grind. Keep the yield.</title>
+<meta name="description" content="A next-generation, ready-to-fruit grow block for commercial mushroom growers. In development in Colorado.">
+<meta property="og:title" content="Rocky Mountain Mushroom Farm">
+<meta property="og:description" content="Skip the grind. Keep the yield. A ready-to-fruit grow block for commercial growers — in development in Colorado.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍄</text></svg>">
+<style>
+  :root{
+    --ink:#1e1e1c; --pine:#2f4a3c; --cream:#f4efe6; --amber:#c0763b;
+    --bg:#f4efe6; --panel:#fffdfa; --line:#ddd5c7; --muted:#6b6459;
+    --maxw:660px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#161614; --panel:#1e1e1b; --line:#33322d; --ink:#ece7dd;
+           --muted:#9c948a; --pine:#7ea88f; --amber:#d9925c; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  header{padding:72px 0 8px;text-align:center}
+
+  /* Corrected singular-"Farm" emblem. Black linework on transparent, so it sits
+     straight on the cream ground; inverted in dark mode. */
+  .emblem{width:122px;height:122px;margin:0 auto 18px;display:block}
+  .emblem img{width:100%;height:auto;display:block}
+  @media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
+
+  /* Typographic wordmark under the seal — the ring text is unreadable at 122px,
+     so the name is set in type as well. */
+  .lockup{
+    font-weight:660; letter-spacing:.16em; text-transform:uppercase;
+    font-size:13px; line-height:1.9; color:var(--pine); margin:0 0 30px;
+  }
+  h1{
+    font-size:clamp(31px,6.4vw,46px); line-height:1.1; letter-spacing:-.025em;
+    font-weight:680; margin:0 0 18px;
+  }
+  .sub{font-size:clamp(17px,2.4vw,19px); color:var(--muted); margin:0 auto; max-width:30em}
+  .rule{height:1px;background:var(--line);margin:60px 0;border:0}
+
+  section{padding:6px 0}
+  h2{
+    font-size:12px; text-transform:uppercase; letter-spacing:.13em; font-weight:660;
+    color:var(--pine); margin:0 0 14px;
+  }
+  section p{margin:0 0 18px}
+  section p:last-child{margin-bottom:0}
+  strong{font-weight:640}
+
+  .cta{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:32px 26px; margin:56px 0 0;
+  }
+  .cta h2{color:var(--amber)}
+  .cta h3{font-size:23px;line-height:1.25;letter-spacing:-.015em;margin:0 0 12px;font-weight:660}
+  .cta p{color:var(--muted);margin:0 0 22px}
+  .formbox{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    background:#fff; min-height:520px;
+  }
+  .formbox iframe{width:100%;height:1180px;border:0;display:block}
+  .fallback{padding:22px;text-align:center}
+  .btn{
+    display:inline-block; background:var(--amber); color:#fff; text-decoration:none;
+    font-weight:620; padding:13px 24px; border-radius:9px;
+  }
+  .btn:hover{filter:brightness(1.07)}
+
+  .quiet{font-size:15px;color:var(--muted)}
+  a{color:var(--pine)}
+  footer{
+    margin:64px 0 0; padding:26px 0 60px; border-top:1px solid var(--line);
+    font-size:14px; color:var(--muted); text-align:center;
+  }
+  footer p{margin:0 0 6px}
+  @media (max-width:520px){
+    header{padding-top:52px}
+    .cta{padding:26px 18px}
+    .formbox iframe{height:1320px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="emblem"><img src="assets/emblem.png" alt="Rocky Mountain Mushroom Farm — woodcut oyster-mushroom seal"></div>
+
+    <div class="lockup">Rocky&nbsp;Mountain<br>Mushroom&nbsp;Farm</div>
+
+    <h1>Skip the grind.<br>Keep the yield.</h1>
+    <p class="sub">A next-generation, ready-to-fruit grow block for commercial growers — in development in Colorado.</p>
+  </header>
+
+  <hr class="rule">
+
+  <section>
+    <h2>The problem</h2>
+    <p>Substrate is the wall. The prep line, the clean room, the incubation space, the bags you lose to
+    contamination — together they cap how much you can grow, no matter how much you can sell.</p>
+    <p>Most growers know the trade already: at some point it becomes worth paying someone else to make the
+    block, just to get the room and the hours back.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>What we're building</h2>
+    <p>A <strong>ready-to-fruit block</strong> that resists contamination on its own — and a reworked way of
+    making it. Prep space becomes growing space, and a bad batch stops taking the month with it.</p>
+    <p>We're not selling yet. Right now we're talking to growers to make sure we build the right thing.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>The homework</h2>
+    <p>This isn't armchair. Behind it is a technical plan running about <strong>470 pages</strong> and drawing on
+    more than <strong>500 sources</strong>, plus a bench-test campaign running now. Patent pending.</p>
+    <p class="quiet">Serious partners can review the technical detail under NDA.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Who's behind it</h2>
+    <p>Rocky Mountain Mushroom Farm is a Colorado company. I came at this from the ground up — the block is the
+    thing I kept wishing someone would fix, so I started working on it.</p>
+    <p>I'd like local and regional growers to be the first partners, and I'd rather build what they actually need
+    than guess at it.</p>
+  </section>
+
+  <div class="cta">
+    <h2>Growers</h2>
+    <h3>Help shape what we build.</h3>
+    <p>A short survey — about two minutes. What you pay now, what breaks, what would actually be worth switching
+    for. No pitch, no list, no follow-up unless you ask for one.</p>
+
+    <div class="formbox">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdHwVV0NxOUmrvobH6oMgoYUx5IJwxWQ45X8u2-qL8CkjHUiw/viewform?embedded=true"
+        loading="lazy" title="Grower survey">
+        <div class="fallback">
+          <p>Loading the survey…</p>
+          <a class="btn" href="https://forms.gle/b7mAE9jo8bEF1eQM7">Open the survey</a>
+        </div>
+      </iframe>
+    </div>
+
+    <p class="quiet" style="margin:18px 0 0">Trouble with the embedded form?
+      <a href="https://forms.gle/b7mAE9jo8bEF1eQM7">Open it in a new tab</a>.</p>
+  </div>
+
+  <footer>
+    <p><strong>Rocky Mountain Mushroom Farm LLC</strong> · Colorado</p>
+    <p><a href="mailto:josephchhammond@gmail.com">josephchhammond@gmail.com</a></p>
+    <p class="quiet" style="margin-top:12px">In development. Nothing on this page is an offer for sale.</p>
+  </footer>
+
+</div>
+</body>
+</html>
