@@ -3,50 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rocky Mountain Mushroom Farm — Skip the grind. Keep the yield.</title>
-<meta name="description" content="A next-generation, ready-to-fruit grow block for commercial mushroom growers. In development in Colorado.">
+<title>Rocky Mountain Mushroom Farm — ready-to-fruit grow blocks for commercial growers</title>
+<meta name="description" content="Ready-to-fruit grow blocks for commercial oyster, shiitake and lion's mane growers across Colorado and the Mountain West. In development — we're talking to growers first.">
+<meta name="theme-color" content="#f4efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://josephchhammond.github.io/rmmf-site/">
 <meta property="og:title" content="Rocky Mountain Mushroom Farm">
-<meta property="og:description" content="Skip the grind. Keep the yield. A ready-to-fruit grow block for commercial growers — in development in Colorado.">
+<meta property="og:description" content="Skip the grind. Keep the yield. Ready-to-fruit grow blocks for commercial growers — in development in Colorado.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍄</text></svg>">
+<meta property="og:url" content="https://josephchhammond.github.io/rmmf-site/">
+<meta property="og:image" content="https://josephchhammond.github.io/rmmf-site/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="apple-touch-icon" href="assets/emblem.png">
+<link rel="preconnect" href="https://docs.google.com">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization",
+ "name":"Rocky Mountain Mushroom Farm LLC",
+ "alternateName":"Rocky Mountain Mushroom Farm",
+ "url":"https://josephchhammond.github.io/rmmf-site/",
+ "logo":"https://josephchhammond.github.io/rmmf-site/assets/emblem.png",
+ "email":"josephchhammond@gmail.com",
+ "foundingDate":"2025-01-17",
+ "founder":{"@type":"Person","name":"Joey Hammond"},
+ "address":{"@type":"PostalAddress","addressRegion":"CO","addressCountry":"US"},
+ "areaServed":[{"@type":"State","name":"Colorado"},{"@type":"Place","name":"Mountain West"}],
+ "description":"Develops ready-to-fruit mushroom grow blocks for commercial growers of oyster, shiitake and lion's mane.",
+ "knowsAbout":["mushroom substrate","ready-to-fruit grow blocks","oyster mushrooms","shiitake","lion's mane"]}
+</script>
 <style>
   :root{
-    --ink:#1e1e1c; --pine:#2f4a3c; --cream:#f4efe6; --amber:#c0763b;
-    --bg:#f4efe6; --panel:#fffdfa; --line:#ddd5c7; --muted:#6b6459;
+    color-scheme: light dark;
+    --ink:#1e1e1c; --pine:#2f4a3c; --cream:#f4efe6; --amber:#b0642e;
+    --bg:#f4efe6; --panel:#fffdfa; --line:#ddd5c7; --muted:#635c51;
     --maxw:660px;
   }
   @media (prefers-color-scheme: dark){
     :root{ --bg:#161614; --panel:#1e1e1b; --line:#33322d; --ink:#ece7dd;
-           --muted:#9c948a; --pine:#7ea88f; --amber:#d9925c; }
+           --muted:#a29a8f; --pine:#8fb69c; --amber:#e0a06d; }
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0; background:var(--bg); color:var(--ink);
-    font:17px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,"Helvetica Neue",sans-serif;
+    font:17.5px/1.66 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Inter,"Helvetica Neue",sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  header{padding:72px 0 8px;text-align:center}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative;z-index:1}
 
-  /* Corrected singular-"Farm" emblem. Black linework on transparent, so it sits
-     straight on the cream ground; inverted in dark mode. */
-  .emblem{width:122px;height:122px;margin:0 auto 18px;display:block}
+  /* Oyster-gill lattice, drawn (not traced) so it is ours outright. Sits as a very
+     quiet ground behind the header only, so the page still reads as calm. */
+  .gills{
+    position:absolute; inset:0 0 auto 0; height:520px; z-index:0; pointer-events:none;
+    background:url("assets/gills.svg") repeat; background-size:150px auto; opacity:.055;
+    -webkit-mask-image:linear-gradient(#000,transparent);
+    mask-image:linear-gradient(#000,transparent);
+  }
+  @media (prefers-color-scheme: dark){ .gills{opacity:.085} }
+
+  a.skip{
+    position:absolute; left:-9999px; top:0; background:var(--pine); color:#fff;
+    padding:10px 16px; border-radius:0 0 8px 0; z-index:10;
+  }
+  a.skip:focus{left:0}
+
+  header{padding:70px 0 8px;text-align:center}
+  .emblem{width:118px;height:118px;margin:0 auto 20px;display:block}
   .emblem img{width:100%;height:auto;display:block}
   @media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
-
-  /* Typographic wordmark under the seal — the ring text is unreadable at 122px,
-     so the name is set in type as well. */
   .lockup{
     font-weight:660; letter-spacing:.16em; text-transform:uppercase;
-    font-size:13px; line-height:1.9; color:var(--pine); margin:0 0 30px;
+    font-size:12.5px; line-height:1.9; color:var(--pine); margin:0 0 26px;
   }
   h1{
-    font-size:clamp(31px,6.4vw,46px); line-height:1.1; letter-spacing:-.025em;
-    font-weight:680; margin:0 0 18px;
+    font-size:clamp(30px,6.4vw,46px); line-height:1.08; letter-spacing:-.025em;
+    font-weight:680; margin:0 0 16px;
   }
-  .sub{font-size:clamp(17px,2.4vw,19px); color:var(--muted); margin:0 auto; max-width:30em}
-  .rule{height:1px;background:var(--line);margin:60px 0;border:0}
+  .sub{font-size:clamp(17px,2.4vw,19px); color:var(--muted); margin:0 auto; max-width:31em}
+  .who{
+    margin:22px auto 0; font-size:14px; letter-spacing:.02em; color:var(--pine);
+    border:1px solid var(--line); border-radius:100px; padding:7px 16px;
+    display:inline-block; background:var(--panel);
+  }
+  .rule{height:1px;background:var(--line);margin:58px 0;border:0}
 
   section{padding:6px 0}
   h2{
@@ -56,6 +95,12 @@
   section p{margin:0 0 18px}
   section p:last-child{margin-bottom:0}
   strong{font-weight:640}
+  .lede{font-size:19px;line-height:1.5}
+
+  dl{margin:0}
+  dt{font-weight:640;margin:22px 0 5px}
+  dt:first-of-type{margin-top:0}
+  dd{margin:0;color:var(--muted)}
 
   .cta{
     background:var(--panel); border:1px solid var(--line); border-radius:14px;
@@ -63,110 +108,200 @@
   }
   .cta h2{color:var(--amber)}
   .cta h3{font-size:23px;line-height:1.25;letter-spacing:-.015em;margin:0 0 12px;font-weight:660}
-  .cta p{color:var(--muted);margin:0 0 22px}
+  .cta p{color:var(--muted);margin:0 0 20px}
   .formbox{
-    border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    background:#fff; min-height:520px;
+    border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff;
   }
-  .formbox iframe{width:100%;height:1180px;border:0;display:block}
-  .fallback{padding:22px;text-align:center}
+  .formbox iframe{width:100%;height:900px;border:0;display:block}
   .btn{
     display:inline-block; background:var(--amber); color:#fff; text-decoration:none;
     font-weight:620; padding:13px 24px; border-radius:9px;
+    transition:filter .18s ease, transform .18s ease;
   }
-  .btn:hover{filter:brightness(1.07)}
-
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
   .quiet{font-size:15px;color:var(--muted)}
   a{color:var(--pine)}
+  a:focus-visible,.btn:focus-visible,iframe:focus-visible{
+    outline:2px solid var(--amber); outline-offset:3px; border-radius:3px;
+  }
   footer{
     margin:64px 0 0; padding:26px 0 60px; border-top:1px solid var(--line);
     font-size:14px; color:var(--muted); text-align:center;
   }
   footer p{margin:0 0 6px}
+
+  /* Motion is opt-out by default: sections start visible, and only animate for
+     users who have not asked for reduced motion AND whose browser supports it. */
+  @media (prefers-reduced-motion: no-preference){
+    .fade{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+    .fade.in{opacity:1;transform:none}
+  }
   @media (max-width:520px){
-    header{padding-top:52px}
+    header{padding-top:48px}
     .cta{padding:26px 18px}
-    .formbox iframe{height:1320px}
+    .formbox iframe{height:1050px}
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#survey">Skip to the grower survey</a>
+<div class="gills" aria-hidden="true"></div>
 <div class="wrap">
 
   <header>
-    <div class="emblem"><img src="assets/emblem.png" alt="Rocky Mountain Mushroom Farm — woodcut oyster-mushroom seal"></div>
+    <div class="emblem">
+      <img src="assets/emblem.png" width="118" height="118" decoding="async"
+           alt="Rocky Mountain Mushroom Farm — woodcut oyster-mushroom seal">
+    </div>
 
     <div class="lockup">Rocky&nbsp;Mountain<br>Mushroom&nbsp;Farm</div>
 
     <h1>Skip the grind.<br>Keep the yield.</h1>
-    <p class="sub">A next-generation, ready-to-fruit grow block for commercial growers — in development in Colorado.</p>
+    <p class="sub">A ready-to-fruit grow block for <strong>commercial growers</strong> — oyster,
+    shiitake and lion's mane. In development in Colorado.</p>
+    <p><span class="who">For growers across Colorado and the Mountain West</span></p>
   </header>
 
   <hr class="rule">
 
-  <section>
+  <section class="fade">
     <h2>The problem</h2>
-    <p>Substrate is the wall. The prep line, the clean room, the incubation space, the bags you lose to
-    contamination — together they cap how much you can grow, no matter how much you can sell.</p>
-    <p>Most growers know the trade already: at some point it becomes worth paying someone else to make the
-    block, just to get the room and the hours back.</p>
+    <p class="lede">Substrate is the wall — and it's a <strong>space</strong> problem before
+    it's anything else.</p>
+    <p>The prep line, the clean room, the incubation racks: they take the square footage you'd
+    rather be fruiting in, and they cap how much you can grow no matter how much you can sell.
+    Then there's what you lose. A contaminated block doesn't cost you the few dollars of
+    sawdust in it — it costs you the <strong>$20–30 of mushrooms it would have grown</strong>.</p>
+    <p>Most growers know the trade already: at some point it becomes worth paying someone else
+    to make the block, just to get the room and the hours back.</p>
   </section>
 
   <hr class="rule">
 
-  <section>
+  <section class="fade">
     <h2>What we're building</h2>
-    <p>A <strong>ready-to-fruit block</strong> that resists contamination on its own — and a reworked way of
-    making it. Prep space becomes growing space, and a bad batch stops taking the month with it.</p>
-    <p>We're not selling yet. Right now we're talking to growers to make sure we build the right thing.</p>
+    <p>A <strong>ready-to-fruit block</strong> that resists contamination on its own — and a
+    reworked way of making it. Prep space becomes growing space.</p>
+    <p>We're not selling yet. No orders, no waitlist, no pre-orders. Right now I'm talking to
+    growers to make sure the thing we build is the thing that's actually worth switching for —
+    and the growers I talk to now are the ones I'd want as first trial partners.</p>
   </section>
 
   <hr class="rule">
 
-  <section>
+  <section class="fade">
     <h2>The homework</h2>
-    <p>This isn't armchair. Behind it is a technical plan running about <strong>470 pages</strong> and drawing on
-    more than <strong>500 sources</strong>, plus a bench-test campaign running now. Patent pending.</p>
+    <p>This isn't armchair. Behind it is a technical plan running about <strong>470 pages</strong>
+    and drawing on more than <strong>500 sources</strong>, and a bench-test campaign that has
+    been running since July 2026.</p>
+    <p><strong>Patent pending</strong> — provisional filed July 2026. Rocky Mountain Mushroom
+    Farm LLC is a Colorado company, formed 2025.</p>
     <p class="quiet">Serious partners can review the technical detail under NDA.</p>
   </section>
 
   <hr class="rule">
 
-  <section>
-    <h2>Who's behind it</h2>
-    <p>Rocky Mountain Mushroom Farm is a Colorado company. I came at this from the ground up — the block is the
-    thing I kept wishing someone would fix, so I started working on it.</p>
-    <p>I'd like local and regional growers to be the first partners, and I'd rather build what they actually need
-    than guess at it.</p>
+  <section class="fade">
+    <h2>Questions growers ask</h2>
+    <dl>
+      <dt>How does it work?</dt>
+      <dd>The short answer is that it's a change to the block itself rather than to your
+      process — which is the part I can't say more about until the patent work is further
+      along. I'd rather be straight about that than hand-wave.</dd>
+
+      <dt>What will it cost?</dt>
+      <dd>I won't quote a price I can't yet stand behind. The target is to compete on what a
+      block <em>loses</em> you, not just what it costs you.</dd>
+
+      <dt>When can I get one?</dt>
+      <dd>Not this year. The bench work has to finish first, then trials. If you want to be in
+      the first round, the survey below is how you get on that list.</dd>
+
+      <dt>Are you real?</dt>
+      <dd>A Colorado LLC formed in January 2025, one person, a filed provisional, and a bench
+      campaign running now. Small and real beats big and vapor.</dd>
+    </dl>
   </section>
 
-  <div class="cta">
+  <hr class="rule">
+
+  <section class="fade">
+    <h2>Who's behind it</h2>
+    <p>I'm Joey Hammond, and I came at this from the ground up — the block is the thing I kept
+    wishing someone would fix, so I started working on it.</p>
+    <p>I'd like local and regional growers to be the first partners, and I'd rather build what
+    they actually need than guess at it.</p>
+  </section>
+
+  <div class="cta" id="survey">
     <h2>Growers</h2>
     <h3>Help shape what we build.</h3>
-    <p>A short survey — about two minutes. What you pay now, what breaks, what would actually be worth switching
-    for. No pitch, no list, no follow-up unless you ask for one.</p>
+    <p>A short survey — about three minutes. What you pay now, what breaks, what would actually
+    be worth switching for. No pitch, no list, no follow-up unless you ask for one.</p>
 
     <div class="formbox">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdHwVV0NxOUmrvobH6oMgoYUx5IJwxWQ45X8u2-qL8CkjHUiw/viewform?embedded=true"
-        loading="lazy" title="Grower survey">
-        <div class="fallback">
-          <p>Loading the survey…</p>
-          <a class="btn" href="https://forms.gle/b7mAE9jo8bEF1eQM7">Open the survey</a>
-        </div>
-      </iframe>
+      <iframe id="form"
+        data-src="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform?embedded=true"
+        src="about:blank" loading="lazy" title="Rocky Mountain Mushroom Farm grower survey"></iframe>
     </div>
+    <noscript>
+      <p style="margin:16px 0 0"><a class="btn"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform">Open
+        the survey</a></p>
+    </noscript>
 
     <p class="quiet" style="margin:18px 0 0">Trouble with the embedded form?
-      <a href="https://forms.gle/b7mAE9jo8bEF1eQM7">Open it in a new tab</a>.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform">Open
+      it in a new tab</a>.</p>
+    <p class="quiet" style="margin:10px 0 0">What happens next: I read every response myself.
+      Your contact details are only used to get back to you about this, and only if you say yes.
+      If your answers suggest you're a fit for early trials, you'll hear from me before anyone
+      else does — otherwise you won't hear from me at all.</p>
   </div>
 
   <footer>
-    <p><strong>Rocky Mountain Mushroom Farm LLC</strong> · Colorado</p>
+    <p><strong>Rocky Mountain Mushroom Farm LLC</strong> · Colorado · formed 2025</p>
     <p><a href="mailto:josephchhammond@gmail.com">josephchhammond@gmail.com</a></p>
-    <p class="quiet" style="margin-top:12px">In development. Nothing on this page is an offer for sale.</p>
+    <p class="quiet" style="margin-top:12px">In development. Nothing on this page is an offer
+    for sale.</p>
   </footer>
 
 </div>
+
+<script>
+// Load the form iframe only when the reader gets near it: it is by far the heaviest
+// thing on the page and most visitors never scroll to it.
+(function(){
+  var f = document.getElementById('form');
+  function go(){ if (f && f.src.indexOf('about:blank') === 0) f.src = f.dataset.src; }
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es, o){
+      es.forEach(function(e){ if (e.isIntersecting){ go(); o.disconnect(); } });
+    }, {rootMargin: '600px'}).observe(f.parentNode);
+  } else { go(); }
+
+  // Attribution: the card QR carries ?src=card. Kept in sessionStorage so it survives
+  // the scroll to the form, and stamped into the form's prefill if one is configured.
+  var src = new URLSearchParams(location.search).get('src');
+  if (src) { try { sessionStorage.setItem('rmmf_src', src); } catch(e){} }
+
+  // Motion, only for readers who have not asked for less of it.
+  if (window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.fade').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+
+<!-- ANALYTICS (owner action). Cloudflare Web Analytics is free, needs no cookie banner,
+     and collects no personal data. Once you have a token, paste this line right here:
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "PASTE_YOUR_TOKEN"}'></script>
+     Setup steps are in ../CLOUDFLARE_AND_DOMAIN_SETUP.md -->
 </body>
 </html>
