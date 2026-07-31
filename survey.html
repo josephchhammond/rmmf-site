@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" class="nojs">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.className="js"</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grower survey — Rocky Mountain Mushroom Farm</title>
+<meta name="description" content="A seven-minute survey for commercial specialty-mushroom growers: what substrate costs you now, what breaks, and what would have to be true before switching.">
+<meta name="theme-color" content="#f4eddd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17160f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://josephchhammond.github.io/rmmf-site/survey.html">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="preconnect" href="https://docs.google.com">
+<style>
+  /* Tokens duplicated from index.html on purpose: two files, no build step, no
+     stylesheet request on the critical path. ../Brand/check_brand.py compares the two
+     by value, so they cannot drift silently. */
+  :root{
+    color-scheme: light dark;
+    --linen:#F4EDDD; --ink:#2A2418; --brick:#9C3B22; --pine:#37543F;
+    --bg:var(--linen); --panel:#FBF6EA; --line:#DCD0B6; --muted:#5F5747;
+    --maxw:820px;
+    --serif: Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",
+             "Times New Roman",serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#17160F; --panel:#1E1C14; --line:#3A3527; --ink:#EDE5D2;
+           --muted:#A79D87; --brick:#D2743F; --pine:#8FB69C; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.62 var(--serif);
+       -webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 22px 40px}
+  a{color:var(--brick)}
+  a:focus-visible,iframe:focus-visible{outline:2px solid var(--brick);outline-offset:3px}
+  .sheet{position:relative;border:1.6px solid var(--brick);
+    box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
+    padding:0 clamp(18px,4vw,40px) clamp(24px,4vw,38px);background:var(--bg);
+    overflow:hidden}
+  .sheet::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:url("assets/gills.png") repeat;background-size:270px 270px;opacity:.055}
+  .sheet>*{position:relative;z-index:1}
+  @media (prefers-color-scheme: dark){ .sheet::before{opacity:.10;filter:invert(1)} }
+  header{text-align:center;padding:clamp(28px,5vw,44px) 0 clamp(20px,3vw,30px);
+    border-bottom:1px solid var(--line);margin:0 calc(-1 * clamp(18px,4vw,40px)) 30px}
+  .emblem{width:78px;margin:0 auto 16px}
+  @media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
+  .wordmark{font-size:15px;letter-spacing:.22em;color:var(--brick);margin:0 0 14px}
+  h1{font-size:clamp(24px,3.4vw,34px);line-height:1.15;margin:0 0 12px;font-weight:400}
+  header p{margin:0 auto;max-width:40ch;color:var(--muted);font-size:17px}
+  .note{color:var(--muted);font-size:16.5px;max-width:62ch;margin:0 auto 26px}
+  .formbox{border:1px solid var(--line);background:#fff}
+  .formbox iframe{width:100%;height:1180px;border:0;display:block}
+  @media (max-width:520px){ .formbox iframe{height:1360px} }
+  .btn{display:inline-block;background:var(--brick);color:#fff;text-decoration:none;
+    font-weight:700;padding:13px 26px}
+  .quiet{font-size:16px;color:var(--muted)}
+  footer{margin:34px 0 0;padding:22px 0 0;border-top:1px solid var(--line);
+    font-size:15px;color:var(--muted);text-align:center}
+  footer p{margin:0 0 6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <div class="sheet">
+
+  <header>
+    <div class="emblem">
+      <img src="assets/emblem.png" width="78" height="78" decoding="async"
+           alt="Rocky Mountain Mushroom Farm — woodcut oyster-mushroom seal">
+    </div>
+    <p class="wordmark">ROCKY&nbsp;MOUNTAIN&nbsp; MUSHROOM&nbsp;FARM</p>
+    <h1>How does your substrate really work?</h1>
+    <p>About seven minutes, mostly taps. For commercial and semi-commercial growers of
+       culinary mushrooms.</p>
+  </header>
+
+  <p class="note">I read every response myself. Contact details are only used to get back
+    to you about this, and only if you say yes. If the form below doesn't load,
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform">open
+    it in a new tab</a>.</p>
+
+  <div class="formbox">
+    <iframe id="form"
+      data-src="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform?embedded=true"
+      src="about:blank" title="Rocky Mountain Mushroom Farm grower survey"></iframe>
+  </div>
+  <noscript>
+    <p style="margin:18px 0 0"><a class="btn"
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfUeYQKqmvA3QiG3QzPqCAmZxPaDbci2TvxzfmQJzX1xI_8oQ/viewform">Open
+      the survey</a></p>
+  </noscript>
+
+  <footer>
+    <p><a href="index.html">&larr; Rocky Mountain Mushroom Farm</a></p>
+    <p><a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
+    <p class="quiet" style="margin-top:10px">In development. Nothing on this page is an
+      offer for sale.</p>
+  </footer>
+
+ </div>
+</div>
+
+<script>
+(function(){
+  // The iframe is the whole page here, so load it immediately rather than on scroll --
+  // but still from JS, so the `src=` prefill below can be applied before the request.
+  var f = document.getElementById('form');
+  var src = new URLSearchParams(location.search).get('src');
+  if (!src) { try { src = sessionStorage.getItem('rmmf_src'); } catch(e){} }
+  var url = f.dataset.src;
+  // ENTRY ID: after running build_google_form.gs, use "Get pre-filled link" on the
+  // Reference code question and paste its entry.NNNNNNN id here. Until then the
+  // parameter is simply ignored by Google, which is harmless.
+  var ENTRY = '';
+  if (src && ENTRY) url += '&' + ENTRY + '=' + encodeURIComponent(src);
+  f.src = url;
+})();
+</script>
+<!-- ANALYTICS: paste the same Cloudflare beacon line here that goes in index.html. -->
+</body>
+</html>
