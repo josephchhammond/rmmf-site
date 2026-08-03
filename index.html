@@ -8,12 +8,12 @@
 <meta name="description" content="Ready-to-fruit grow blocks for commercial oyster, lion's mane and shiitake farms across Colorado and the Mountain West. Patent-pending production, in development.">
 <meta name="theme-color" content="#f4eddd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17160f" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://josephchhammond.github.io/rmmf-site/">
+<link rel="canonical" href="https://rockymountainmushroomfarm.com/">
 <meta property="og:title" content="Rocky Mountain Mushroom Farm">
 <meta property="og:description" content="Skip the grind. Keep the yield. Ready-to-fruit grow blocks for commercial specialty-mushroom farms — in development in Colorado.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://josephchhammond.github.io/rmmf-site/">
-<meta property="og:image" content="https://josephchhammond.github.io/rmmf-site/assets/og.png">
+<meta property="og:url" content="https://rockymountainmushroomfarm.com/">
+<meta property="og:image" content="https://rockymountainmushroomfarm.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/emblem.png">
 <link rel="apple-touch-icon" href="assets/emblem.png">
@@ -21,8 +21,8 @@
 {"@context":"https://schema.org","@type":"Organization",
  "name":"Rocky Mountain Mushroom Farm LLC",
  "alternateName":"Rocky Mountain Mushroom Farm",
- "url":"https://josephchhammond.github.io/rmmf-site/",
- "logo":"https://josephchhammond.github.io/rmmf-site/assets/emblem.png",
+ "url":"https://rockymountainmushroomfarm.com/",
+ "logo":"https://rockymountainmushroomfarm.com/assets/emblem.png",
  "email":"hello@rockymountainmushroomfarm.com",
  "foundingDate":"2025-01-17",
  "founder":{"@type":"Person","name":"Joey Hammond"},
@@ -68,6 +68,21 @@
   a.skip{position:absolute;left:-9999px;top:0;background:var(--pine);color:#fff;
     padding:10px 16px;border-radius:0 0 8px 0;z-index:20}
   a.skip:focus{left:0}
+
+  /* Top nav (owner, 2026-08-03: "we need to add an about me at the top too so its
+     clearly accessible"). About used to be reachable only from a FAQ answer and the
+     footer, which on a one-screen page means most people never saw it existed. */
+  .nav{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    flex-wrap:wrap;padding:16px 0 0;font-size:13px;letter-spacing:.14em;
+    text-transform:uppercase}
+  .nav-mark{color:var(--pine);text-decoration:none;font-weight:700}
+  .nav-mark[aria-current]{color:var(--brick)}
+  .nav-links{display:flex;gap:20px}
+  .nav-links a{color:var(--pine);text-decoration:none;padding-bottom:2px;
+    border-bottom:1px solid transparent}
+  .nav-links a:hover,.nav-links a[aria-current]{color:var(--brick);
+    border-bottom-color:var(--brick)}
+
 
   /* ── The sheet. The card's double rule now wraps the WHOLE page rather than just
        the masthead (owner, 2026-07-31), so the site reads as one printed object --
@@ -115,14 +130,20 @@
   .hero p.est{margin-top:28px;font-size:13px;letter-spacing:.18em;
     text-transform:uppercase;color:var(--pine)}
 
-  /* ── Editorial two-column body: label left, prose right, measure capped. A single
-       narrow ribbon on a 27-inch monitor is a phone layout that someone stretched. ── */
-  section{display:grid;grid-template-columns:190px minmax(0,1fr);gap:0 46px;
-    padding:50px 0;border-bottom:1px solid var(--line)}
+  /* ── Section headings sit ON TOP of their own section (owner, 2026-08-03). They
+       used to occupy a fixed 190px left rail, which meant every short heading -- and
+       they are all short, because they are labels -- left a hole roughly the width of
+       a paragraph beside it, and the prose started a third of the way across the page
+       for no reason. The hairline rule running out to the right does the job the empty
+       column was doing: it separates the label from the reading without spending the
+       space. ── */
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
   section:last-of-type{border-bottom:0}
-  h2{grid-column:1;margin:6px 0 0;font-size:13px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--pine);font-weight:700}
-  .body{grid-column:2;max-width:var(--measure)}
+  h2{margin:0 0 22px;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--pine);font-weight:700;
+    display:flex;align-items:center;gap:14px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  .body{max-width:var(--measure)}
   .body>*:first-child{margin-top:0}
   .body>*:last-child{margin-bottom:0}
   .body p{margin:0 0 22px}
@@ -130,34 +151,9 @@
   .chores{margin:0 0 22px;font-size:1.06em}
   strong{font-weight:700}
   @media (max-width:860px){
-    section{grid-template-columns:1fr;gap:0;padding:38px 0}
-    h2{grid-column:1;margin:0 0 14px}
-    .body{grid-column:1}
+    section{padding:36px 0}
+    h2{margin:0 0 16px}
   }
-
-  /* The bioreactor clip was shot against a lab wall, and its top-right corner was a
-     hard white panel that punched a hole in the page. build_media.py crops the wall
-     out and grades the highlights down to linen; this mask does the rest, dissolving
-     the rectangle into whatever the page ground is. It has to be CSS, not baked in:
-     the ground is linen in light mode and near-black in dark mode. */
-  figure{margin:30px 0 0}
-  figure.plate{border:1px solid var(--line);background:var(--panel);padding:12px}
-  figure video,figure img{width:100%}
-  figure.clip video{
-    -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 48%,
-      #000 60%,rgba(0,0,0,.62) 85%,transparent 100%);
-    mask-image:radial-gradient(ellipse 84% 76% at 50% 48%,
-      #000 60%,rgba(0,0,0,.62) 85%,transparent 100%);
-  }
-  figcaption{font-size:15px;line-height:1.5;color:var(--muted);padding:10px 4px 2px}
-  .media-row{display:grid;gap:20px;grid-template-columns:minmax(0,186px) minmax(0,1fr);
-    align-items:center;margin:26px 0 0}
-  .media-row figure{margin:0}
-  @media (max-width:640px){ .media-row{grid-template-columns:1fr} }
-
-  .portrait{width:150px;border-radius:50%;border:1px solid var(--line);float:right;
-    margin:4px 0 18px 26px}
-  @media (max-width:520px){ .portrait{float:none;margin:0 auto 20px} }
 
   details{border-top:1px solid var(--line);padding:16px 0}
   details:first-of-type{border-top:0}
@@ -179,9 +175,41 @@
   .slot i{display:block;font-style:normal;color:var(--muted);font-size:14px;margin-top:6px}
   body.clean .slot{display:none}
 
+  /* Draft-only note, same gate as the asset slots. */
+  .todo{display:block;border:1.5px dashed var(--pine);padding:16px;margin:10px 0 0;
+    color:var(--pine);font-size:14px;line-height:1.5;background:var(--panel)}
+  .todo b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    margin-bottom:6px}
+  .todo i{display:block;font-style:normal;color:var(--muted);font-size:13px;
+    margin-top:6px}
+  body.clean .todo{display:none}
+
+  figure.plate{margin:26px 0 0;text-align:center}
+  figure.plate img{margin:0 auto;max-width:min(100%,420px)}
+  figure.plate figcaption{margin-top:10px;font-size:14px;color:var(--muted);
+    font-style:italic}
+
+  /* ── The citation apparatus, on the same draft-only gate as the asset slots. A
+       grower reading a one-page introduction should not meet footnote markers; the
+       owner checking whether a number is real should. So the markers and the source
+       list are the same object, both switched off by `body.clean`, which the script
+       at the bottom sets on any live host. The page therefore reads clean in public
+       and audits itself locally, with no second copy of the page to keep in sync. ── */
+  .src{font-size:.62em;vertical-align:super;line-height:0;margin-left:1px;
+    padding:0 2px;text-decoration:none;color:var(--brick);font-weight:700}
+  .src::before{content:"["} .src::after{content:"]"}
+  body.clean .src{display:none}
+  body.clean .sources{display:none}
+  .sources ol{margin:0 0 22px;padding-left:1.3em;font-size:15px;line-height:1.55;
+    color:var(--muted)}
+  .sources li{margin:0 0 12px}
+  .sources li q{quotes:"\201C" "\201D"}
+  .sources .quiet{font-size:14.5px;line-height:1.55}
+
   .cta{border:1.6px solid var(--brick);box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
     padding:clamp(26px,4vw,42px);margin:52px 0 0;background:var(--panel);text-align:center}
-  .cta h2{grid-column:auto;margin:0 0 10px;color:var(--brick)}
+  .cta h2{margin:0 0 10px;color:var(--brick);display:block}
+  .cta h2::after{display:none}
   .cta h3{font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:0 0 14px;font-weight:400}
   .cta p{color:var(--muted);margin:0 auto 24px;max-width:46ch}
   .btn{display:inline-block;background:var(--brick);color:#fff;text-decoration:none;
@@ -208,6 +236,14 @@
 <div class="wrap">
  <div class="sheet">
 
+  <nav class="nav">
+    <a class="nav-mark" href="index.html">Rocky&nbsp;Mountain Mushroom&nbsp;Farm</a>
+    <span class="nav-links">
+      <a href="about.html">About</a>
+      <a href="survey.html">Survey</a>
+    </span>
+  </nav>
+
   <header class="hero">
     <div class="emblem">
       <img src="assets/emblem.png" width="116" height="116" decoding="async"
@@ -228,25 +264,33 @@
       cooling, inoculating, incubating, cleaning again.</p>
       <p>When Cornell surveyed 139 specialty growers, the top three barriers to growing
       the business were <strong>labor</strong>, <strong>production facilities</strong>,
-      and <strong>growing output to meet demand</strong>. Production knowledge came
-      last. Nearly two thirds already had more demand than they could supply.</p>
-      <p>The ceiling mostly isn't sales, and it isn't know-how. It's the hours and the
-      square footage that go into making blocks. Cornell also costed five indoor farms:
-      making blocks on site, labor was about 80% of what a block cost them; buying them
-      in, about 42%.</p>
-      <p>That's the part we're building around.</p>
+      and <strong>growing output to meet demand</strong>.<a class="src" href="#s1">1</a>
+</p>
+      <p>The ceiling isn't sales, and it's not know-how. It's the hours and the square
+      footage that go into making blocks. Cornell costed five indoor farms and found the
+      same thing in the accounts: on the farms making their own blocks,
+      <strong>80% of what they spent went to labor</strong> and 20% to materials. On the
+      farms buying blocks ready to fruit, labor dropped to
+      <strong>42%</strong>.<a class="src" href="#s2">2</a></p>
+      <p>That's the part I'm aiming to build around.</p>
     </div>
   </section>
 
   <section class="fade">
-    <h2>What we're building</h2>
+    <h2>What I'm building</h2>
     <div class="body">
       <p>A <strong>ready-to-fruit block you buy instead of make</strong>. Prep hours go
       back into growing and selling. Prep space becomes fruiting space.</p>
-      <p>Right now we're finishing development testing, building the first prototypes of
+      <p>The target is to cost less than making your own <strong>once your own hours
+      are in the number</strong>. That qualifier is the whole claim, and I won't put a
+      figure on it until the bench work says what the figure is.</p>
+      <p>To be clear about what I want and what I don't: the part I'd take off your
+      plate is the part that gets cheaper the bigger it gets, which is making the block.
+      Fruiting, packing and selling are local problems, and they stay yours.</p>
+      <p>Right now I'm finishing development testing, building the first prototypes of
       the machinery, working through National Science Foundation funding, and talking to
       growers so that what gets built is grounded in what the industry actually needs
-      rather than in what we assume it needs.</p>
+      rather than in what I assume it needs.</p>
     </div>
   </section>
 
@@ -254,95 +298,32 @@
     <h2>How it works</h2>
     <div class="body">
       <p>Three things at once.</p>
-      <p><strong>A patent-pending method</strong> that redesigns the prep process, aiming
-      to cost less than making blocks yourself once your own hours are counted. It comes
-      out of about five years of testing and a technical plan I wrote that runs about 470
-      pages and draws on more than 500 sources. Patent pending: provisional filed July
-      2026. I'm deep in development testing now, grounding the yield and cost estimates
-      before I put any of them in front of a grower.</p>
+      <p><strong>A patent-pending method</strong> that redesigns how a block gets made.
+      I got into the microbiology side of
+      this early and never really got back out - specifically mycelial enzymatic
+      expression, which is a fancy way of saying the fungus already does a lot of the
+      work itself if you set things up right, so a farm ends up paying in labor and
+      process time for what the biology would do on its own. I spent about five years
+      chasing that, and somewhere in there it turned into a plan that runs 470 pages
+      with more than 500 sources behind it. The method that came out of it is patent
+      pending, filed July 2026. I'm finishing up development tests now to pin down what
+      the yield and the cost actually are, because I'd rather hand you a real number
+      than a hopeful one.</p>
       <p><strong>Custom machinery.</strong> Several steps in substrate prep have no good
-      equipment behind them, so they get done by hand. Those machines are designed, and
-      some of them are already prototyped.</p>
+      equipment behind them, so they get done by hand. My work before this was
+      contamination control in aerospace, on hypergolic propulsion systems, where a
+      process that isn't clean enough doesn't fail politely. I'm using that background to
+      design machinery that is cheap to build, keeps contamination out, and scales.
+      Those machines are designed, and some of them are already prototyped.</p>
       <p><strong>Scale.</strong> Making blocks a thousand at a time costs less per block
       than making them a hundred at a time. Most farms that make their own are working a
-      batch at a time, on equipment sized for a batch.</p>
-    </div>
-  </section>
-
-  <section class="fade">
-    <h2>Where this started</h2>
-    <div class="body">
-      <p class="lede">In 2020 I worked out what nineteen different mushrooms would cost
-      to grow and what each one would sell for. I was trying to answer one question: could
-      gourmet mushrooms ever be cheap?</p>
-      <p>The answer was that the mushroom is never the expensive part. The block is.</p>
-      <p>About five years of hands-on testing since then. I restarted the mycology club at
-      Cal Poly and ran it for two years, built a flow hood, a fruiting chamber, a small lab
-      and a greenhouse, and ran roughly thirty of my own trials on getting substrate
-      colonized without the usual prep. A good number of them didn't work.</p>
-
-      <div class="media-row">
-        <figure class="clip">
-          <video src="assets/bioreactor.mp4" poster="assets/bioreactor_poster.jpg"
-                 autoplay muted loop playsinline preload="metadata"
-                 aria-label="Aerated blue oyster liquid culture running in a bioreactor"></video>
-        </figure>
-        <div>
-          <p>One piece of it: aerated liquid culture of blue oyster in a bioreactor —
-          growth parameters, how the culture answers different nutrients, keeping
-          flocculation under control. Twelve runs over about eighteen months, six of
-          which came off.</p>
-        </div>
-      </div>
-
-      <p style="margin-top:26px">Before this, my work was contamination control in
-      aerospace, on hypergolic propulsion systems, where something that isn't clean
-      enough doesn't fail politely. Keeping a process clean at volume is the same
-      problem here, at a different scale and at a price a farm can pay.</p>
-
-      <p>There's a written technical plan behind all of it: about <strong>470 pages</strong>
-      drawing on more than <strong>500 sources</strong>, and a bench campaign running now.
-      <strong>Patent pending</strong> — provisional filed July 2026. Rocky Mountain
-      Mushroom Farm LLC is a Colorado company, formed 2025.</p>
-
-      <div class="slot"><b>Asset slot — bench photo</b>
-        Stage A vials on the rack, natural light.
-        <i>Highest-value image still missing: it makes "a bench campaign is running"
-        something you can see rather than something you have to take my word for.</i></div>
-      <div class="slot"><b>Asset slot — the technical plan</b>
-        A photo or screenshot of a spread from the 470-page plan, ideally a mycology page
-        with figures on it.
-        <i>"470 pages" is a claim. A picture of it is evidence, and it's the cheapest
-        credibility on this page.</i></div>
-    </div>
-  </section>
-
-  <section class="fade">
-    <h2>Who's behind it</h2>
-    <div class="body">
-      <img class="portrait" src="assets/headshot.jpg" width="150" height="150"
-           loading="lazy" decoding="async" alt="Joey Hammond, founder">
-      <p>I'm Joey Hammond. I've walked other people's farms, watched their prep, timed
-      it, and cost-modelled their lines against a bought-in block.</p>
-      <p>So if you grow commercially, I'd genuinely like to hear how your substrate works
-      today: what it costs you, what it costs you in time, and what would have to be true
-      before you'd swap any of it out.</p>
-      <div class="slot"><b>Asset slot — a better portrait</b>
-        A photo of you among the mushrooms or at the bench, rather than against a wall.
-        <i>The current headshot is fine and generic. One with the work in the frame does
-        the job of a paragraph. `headshot_editor.html` in this folder will crop and
-        colour-match whatever you shoot.</i></div>
+      batch at a time, on equipment sized for a batch.<a class="src" href="#s2">2</a></p>
     </div>
   </section>
 
   <section class="fade">
     <h2>Questions</h2>
     <div class="body">
-      <details>
-        <summary>What will it cost?</summary>
-        <p>I won't quote a price I can't stand behind yet. The target is to beat what a
-        block costs you to make once your own labor is counted.</p>
-      </details>
       <details>
         <summary>When can I get one?</summary>
         <p>Not this year. Bench work finishes first, then trials. The survey is how you
@@ -351,40 +332,93 @@
       <details>
         <summary>What species?</summary>
         <p>Blue oyster first, then lion's mane and shiitake — the sawdust-block species.
-        Which one moves fastest after oyster depends partly on what growers tell us.</p>
+        Which one moves fastest after oyster depends partly on what growers tell me.</p>
       </details>
       <details>
-        <summary>Buying blocks means paying up front and waiting to get paid.</summary>
-        <p>It does, and Cornell put that gap at eight to twelve weeks. It's the strongest
-        argument against buying blocks at all, and any terms we offer have to answer it.
-        There's a question about it on the survey, and how growers answer it will shape
-        what we do about it.</p>
+        <summary>Isn't buying blocks just what you do before you scale up?</summary>
+        <p>That's the honest objection, and it's the one I take most seriously - most
+        people who buy blocks are buying them on the way to making their own. A brewery
+        doesn't malt its own barley though, and a bakery doesn't mill its own flour.
+        Buying an input stops being a beginner move at the point where the person making
+        it is doing something you can't do as cheaply in your own building. That's the
+        whole bet, and it's a fair thing to hold me to.</p>
+      </details>
+      <details>
+        <summary>Who is this?</summary>
+        <p>Joey Hammond, in Colorado. Rocky Mountain Mushroom Farm LLC is a Colorado
+        company, formed 2025. <a href="about.html">More about me and how this
+        started &rarr;</a></p>
       </details>
       <div class="slot"><b>Asset slot — the block itself</b>
         A photograph of a finished block, once there is one to photograph.
         <i>When this exists it becomes the hero image and the page gets rebuilt around
         it.</i></div>
-      <div class="slot"><b>Asset slot — the gill pattern</b>
-        The background lattice behind the masthead is the interim drawn version.
-        <i>Swap in the final artwork from <code>Brand/pattern/</code> when it lands, then
-        re-run <code>check_page.py</code>. Tracked as MKT-12.</i></div>
+      <div class="slot"><b>Asset slot — bench photo</b>
+        Stage A vials on the rack, natural light.
+        <i>Highest-value image still missing: it makes "development testing is running"
+        something you can see rather than something you have to take my word for.</i></div>
+      <figure class="plate">
+        <img src="assets/paper.png" width="560" height="696" loading="lazy"
+             alt="A fanned stack of pages from the technical plan">
+        <figcaption>The plan. 470 pages, more than 500 sources.</figcaption>
+      </figure>
+      <div class="todo"><b>Replace this image before launch</b>
+        This is a generated mockup, not the real thing. Regenerate it from a
+        full-resolution screenshot of an actual page:
+        <i>python paper_mockup.py &lt;page.png&gt; — then resize to 560px and drop it in
+        as assets/paper.png. Ideally a mycology page with figures on it.</i></div>
     </div>
   </section>
 
   <div class="cta" id="talk">
     <h2>Growers</h2>
     <h3>Tell me how your substrate really works.</h3>
-    <p>About 7 minutes, mostly taps. What it costs you now, what breaks, and what would
-    have to be true before switching. I read every response myself, and the growers who
+    <p>About 3 minutes for the part I actually need, mostly taps: what you run, what
+    it costs you now, and what breaks. I read every response myself, and the growers who
     answer it are the ones I'll come to first when there are trial blocks to give away.</p>
     <p><a class="btn" href="survey.html">Take the survey</a></p>
     <p class="quiet" style="margin:22px auto 0">Or just email me:
       <a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
   </div>
 
+  <!-- ── Sources. DRAFT ONLY: `body.clean` hides both these entries and the little
+       superscript markers in the prose, on exactly the same gate as the asset slots
+       above. So you can audit every load-bearing number on this page by opening it
+       locally (or with ?draft=1), and a grower never sees a footnote apparatus on what
+       is supposed to be a one-page introduction. Rule for anything added here: a number
+       on this page either carries a marker, or it comes out. ── */ -->
+  <section class="sources fade" id="sources">
+    <h2>Sources (draft)</h2>
+    <div class="body">
+      <ol>
+        <li id="s1"><a href="https://smallfarms.cornell.edu/2022/09/specialty-mushroom-grower-survey/">Cornell
+          Dyson EB 2022-13, <i>Specialty Mushroom Grower Survey</i></a> (n=139, Jan 2021).
+          Ranked growth barriers: labor 49.2%, production facilities 46.6%, growing output
+          to meet demand 46.6%. 64% report more demand than they can supply.
+          <i>Verified 2026-07-31.</i></li>
+        <li id="s2"><a href="https://smallfarms.cornell.edu/resources/indoor-production/indoor-mushroom-grower-scenario-research-report/">Cornell
+          Small Farms, <i>Indoor Mushroom Grower Scenario Research Report</i></a> (5 farms,
+          NE-SARE). Verbatim: <q>blocks on site at about 20% materials and 80% labor,
+          while ready to fruit block farms have a higher material cost at 58% and labor
+          being 42%.</q> The five farms ran 16, 24, 90, 117 and 313 blocks a week.
+          <i>Verified 2026-08-02.</i></li>
+        <li id="s3">Same report and Cornell's indoor-production guidance: <q>There is
+          typically an 8&ndash;12 week window between buying the blocks and being paid for
+          the mushrooms.</q> <i>Verified 2026-07-31.</i></li>
+      </ol>
+      <p class="quiet"><b>Claims on this page with no marker, and why:</b> the ~470-page
+      plan / 500+ sources and the July 2026 provisional are RMMF's own records, checkable
+      on request but not published. &ldquo;About five years of testing&rdquo; and the
+      aerospace background rest on my own account (owner decisions D1 and D2). The machinery
+      is described as designed-and-partly-prototyped, which is the current state, not a
+      claim about performance. There is no yield, contamination or price number anywhere on
+      this page, deliberately, because the bench campaign has not produced one yet.</p>
+    </div>
+  </section>
+
   <footer>
     <p><strong>Rocky Mountain Mushroom Farm LLC</strong> &nbsp;·&nbsp; Colorado
-       &nbsp;·&nbsp; Est. 2025</p>
+       &nbsp;·&nbsp; Est. 2025 &nbsp;·&nbsp; <a href="about.html">About</a></p>
     <p><a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
     <p class="quiet" style="margin-top:12px;font-size:13px">In development; nothing here
     is an offer for sale.</p>
@@ -420,22 +454,14 @@
     document.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
   }
 
-  // A muted autoplay video is blocked on some low-power/data-saver setups. If it never
-  // starts, the poster is already showing, so nothing breaks -- but pause it off-screen
-  // so it is not decoding frames nobody is looking at.
-  var v = document.querySelector('video');
-  if (v && 'IntersectionObserver' in window){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting) { v.play().catch(function(){}); } else { v.pause(); } });
-    }, {threshold:0.15}).observe(v);
-  }
+  // The bioreactor clip lives on about.html now (owner, 2026-08-02: the origin story
+  // moved off the home page), so this page carries no video at all.
 })();
 </script>
 
-<!-- ANALYTICS (owner action). Cloudflare Web Analytics is free, cookieless, and needs no
-     consent banner. Once you have a token, paste this line here AND in survey.html:
+<!-- Cloudflare Web Analytics. Free, cookieless, no consent banner needed.
+     Token supplied by the owner 2026-08-03. Same line on all three pages. -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon='{"token": "PASTE_YOUR_TOKEN"}'></script>
-     Steps: ../CLOUDFLARE_AND_DOMAIN_SETUP.md -->
+        data-cf-beacon='{"token": "ac9e7b3b735646d6b287cc9cdd461522"}'></script>
 </body>
 </html>

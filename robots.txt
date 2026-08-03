@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://josephchhammond.github.io/rmmf-site/sitemap.xml
+Sitemap: https://rockymountainmushroomfarm.com/sitemap.xml
