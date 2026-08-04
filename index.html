@@ -39,8 +39,8 @@
  <div class="sheet">
 
   <nav class="nav">
-    <a class="nav-mark" href="index.html" aria-current="page">Rocky&nbsp;Mountain Mushroom&nbsp;Farm</a>
     <span class="nav-links">
+      <a href="index.html" class="home" aria-current="page">Home</a>
       <a href="about.html">About</a>
       <a href="survey.html">Survey</a>
     </span>
@@ -95,44 +95,51 @@
   <section class="fade">
     <h2>How it works</h2>
     <div class="body">
-      <p class="lede">Three things, and they only pay off together: a method that changes
-      what a block costs to make, machinery that exists because nothing off the shelf
-      does the job, and enough scale for either of those to matter.</p>
-      <p><strong>A patent-pending method</strong> that redesigns how a block gets made.
-      I got into the microbiology side of this early and never really got back out -
-      specifically mycelial enzymatic expression, which is a fancy way of saying the
-      fungus already does a lot of the work itself if you set things up right, so a farm
-      ends up paying in labor and process time for what the biology would do on its own.
-      I spent about five years chasing that, and somewhere in there it turned into a plan
-      that runs 470 pages with more than 500 sources behind it. The method that came out
-      of it is patent pending, filed July 2026. I'm finishing up development tests now to
-      pin down what the yield and the cost actually are, because I'd rather hand you a
-      real number than a hopeful one.</p>
-      <p><strong>Custom machinery.</strong> Several steps in substrate prep have no good
-      equipment behind them, so they get done by hand. My work before this was
-      contamination control in aerospace, on hypergolic propulsion systems, where a
-      process that isn't clean enough doesn't fail politely. I'm using that background to
-      design machinery that is cheap to build, keeps contamination out, and scales. Those
-      machines are designed, and some of them are already prototyped.</p>
+      <p class="lede">The leverage points that are driving the production cost down.</p>
       <p><strong>Scale.</strong> Making blocks a thousand at a time costs less per block
-      than making them a hundred at a time. Most farms that make their own are working a
-      batch at a time, on equipment sized for a batch.<a class="src" href="#s2">2</a></p>
+      than making them a hundred at a time. A farm that focuses ONLY on substrate prep can
+      specialize and increase batch volume.<a class="src" href="#s2">2</a></p>
+      <p><strong>Custom machinery.</strong> Several steps in substrate prep have no good
+      equipment behind them, so they get done by hand. Coming from a background in
+      contamination control for hypergolic propulsion systems I learned how to make
+      machinery that's custom, cheap, leak (and contam) tight, and easy to clean. These
+      machines across the prep line, in their current state, range from drafted mechanisms
+      to mature prototypes.</p>
+      <p><strong>A patent-pending method</strong> that redesigns the prep process to cut
+      cost and raise the quality of the block. It comes out of about five years of testing
+      and a research paper I wrote on microbiology and mycelial enzymatic expression that
+      runs about 470 pages and draws on more than 500 sources in mycology and
+      microbiology. Patent pending: provisional filed July 2026. I'm deep in development
+      testing now, grounding the yield and cost numbers now.</p>
 
-      <figure class="plate">
-        <img src="assets/paper.png" width="560" height="696" loading="lazy"
-             alt="A fanned stack of pages from the technical plan">
-        <figcaption>The plan. 470 pages, more than 500 sources.</figcaption>
-      </figure>
-      <div class="todo"><b>Replace this image before launch</b>
-        A generated mockup, not the real thing. Regenerate from a full-resolution
-        screenshot of an actual page.
-        <i>python paper_mockup.py &lt;page.png&gt; — then resize to 560px wide and drop
-        it in as assets/paper.png. Ideally a mycology page with figures on it.</i></div>
-
-      <div class="slot"><b>Asset slot — bench photo</b>
-        Stage A vials on the rack, natural light.
+      <!-- ══ SHARED FIGURE TRIO ══════════════════════════════════════════════
+           These three figures also appear on about.html and must stay identical
+           (owner, 2026-08-03). check_page.py holds the canonical src + caption for
+           each and asserts BOTH pages carry them byte-for-byte, so the two copies
+           cannot drift the way three stylesheets did. Change one, the gate fails
+           until you change the other. -->
+      <div class="pair">
+        <figure>
+          <video src="assets/bioreactor.mp4" poster="assets/bioreactor_poster.jpg"
+                 autoplay muted loop playsinline preload="metadata"
+                 aria-label="Aerated blue oyster liquid culture running in a bioreactor"></video>
+          <figcaption>Column airlift blue oyster culture in the Bioflo 3000.</figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="assets/paper.png" width="560" height="696" loading="lazy"
+               alt="A fanned stack of pages from the technical plan">
+          <figcaption>Snapshot of the technical paper.</figcaption>
+        </figure>
+      </div>
+      <div class="slot"><b>Asset slot — the vials</b>
+        Stage A vials on the rack, natural light. Third in this row when it exists,
+        and the same photograph goes on the About page.
         <i>Highest-value image still missing: it makes "development testing is running"
         something you can see rather than something you have to take my word for.</i></div>
+      <div class="todo"><b>Replace the paper image before launch</b>
+        A generated mockup, not the real thing.
+        <i>python paper_mockup.py &lt;page.png&gt; — resize to 560px wide, save as
+        assets/paper.png. It updates on both pages at once.</i></div>
       <div class="slot"><b>Asset slot — the block itself</b>
         A photograph of a finished block, once there is one to photograph.
         <i>When this exists it becomes the hero image and the page gets rebuilt around
@@ -157,28 +164,30 @@
   <section class="fade">
     <h2>Questions</h2>
     <div class="body">
-      <div class="todo"><b>⬖ Owner: pick the FAQs</b>
-        A menu of candidates is in <b>FAQ_OPTIONS.md</b> in this folder. Say which
-        numbers and they go straight in.
-        <i>The four below are the ones that are safe and useful whichever others you
-        choose, so the section is never empty while you decide.</i></div>
       <details>
         <summary>When can I get one?</summary>
         <p>Not this year. Bench work finishes first, then trials. The survey is how you
         get into the first round of those.</p>
       </details>
       <details>
-        <summary>What species?</summary>
-        <p>Blue oyster first, then lion's mane and shiitake — the sawdust-block species.
-        Which one moves fastest after oyster depends partly on what growers tell me.</p>
+        <summary>What species and block size?</summary>
+        <p>I'll focus on hardwood loving species, starting with blue oysters and following
+        with lions mane. Block size will land somewhere between 5&ndash;12 lbs, once
+        grounded to interested farms.</p>
       </details>
       <details>
         <summary>Isn't buying blocks just what you do before you scale up?</summary>
-        <p>That's the honest objection, and it's the one I take most seriously — most
-        people who buy blocks are buying them on the way to making their own. Buying an
-        input stops being a beginner move at the point where the person making it is
-        doing something you can't do as cheaply in your own building. That's the whole
-        bet, and it's a fair thing to hold me to.</p>
+        <p>It's what most people do, and it's the fair version of the objection. The
+        malt and the flour above aren't a dodge though: you stop making an input yourself
+        at the point where somebody doing only that can do it cheaper than you can in your
+        own building, and substrate prep is unusually good at rewarding that kind of
+        focus. If I can't get there, you should keep making your own — and I'd rather find
+        that out from growers now than after I've built it.</p>
+      </details>
+      <details>
+        <summary>Where will you ship?</summary>
+        <p>Colorado and the Front Range first, then the Mountain West. The goal is to
+        quickly reach the contiguous U.S. via freight.</p>
       </details>
       <details>
         <summary>Who is this?</summary>

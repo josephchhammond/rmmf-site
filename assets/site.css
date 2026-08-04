@@ -75,11 +75,15 @@ strong{font-weight:700}
 @media (prefers-color-scheme: dark){ .sheet::before{opacity:.13;filter:invert(1)} }
 
 /* ── Nav. Same markup, same rules, every page. ─────────────────────────────── */
-.nav{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+/* Owner, 2026-08-03: no wordmark on the left -- the emblem and the wordmark are
+   already directly below it, so the nav was saying the company name twice within
+   one screen. Just the three links, right-aligned, with Home carrying the weight
+   the wordmark used to. */
+.nav{display:flex;align-items:baseline;justify-content:flex-end;gap:16px;
   flex-wrap:wrap;padding:16px 0 0;font-size:13px;letter-spacing:.14em;
   text-transform:uppercase}
-.nav-mark{color:var(--pine);text-decoration:none;font-weight:700}
 .nav-links{display:flex;gap:20px}
+.nav-links a.home{font-weight:700}
 .nav-links a{color:var(--pine);text-decoration:none;padding-bottom:2px;
   border-bottom:1px solid transparent}
 .nav-links a:hover,.nav-links a[aria-current]{color:var(--brick);
@@ -88,8 +92,12 @@ strong{font-weight:700}
 /* ── Masthead. `.hero` is the home page's full-bleed version; `.crest` is the
       quieter one the other two pages use. Same parts, two sizes — which is the
       distinction the pages are allowed to have. ───────────────────────────── */
+/* No bottom border (owner, 2026-08-03: "theres still an extra line above the
+   problem"). The masthead drew a rule, and then the first section's own heading
+   hairline drew another one a few pixels below it. Same fix as the section
+   borders: exactly one rule per boundary, and it belongs to the heading. */
 .hero,.crest{position:relative;margin:0 calc(-1 * clamp(20px,4vw,52px));
-  text-align:center;border-bottom:1px solid var(--line)}
+  text-align:center}
 .hero{padding:clamp(38px,6vw,68px) 22px clamp(30px,4vw,46px)}
 .crest{padding:clamp(26px,4vw,44px) 22px clamp(22px,3vw,32px)}
 .emblem{margin:0 auto 22px}
@@ -150,10 +158,24 @@ figcaption{margin-top:10px;font-size:14px;color:var(--muted);font-style:italic;
   max-width:52ch;margin-left:auto;margin-right:auto}
 figure.narrow img,figure.narrow video{max-width:min(100%,420px)}
 figure.plate img{max-width:min(100%,420px);border:0}
-/* Two things side by side, stacking on a phone. */
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;
+/* The tattoo, after the survey block: a postscript, so it is narrow and its
+   caption carries the sentence that used to be a paragraph. */
+figure.psa{margin:var(--gap-section) auto 0;max-width:var(--measure)}
+figure.psa img{max-width:min(100%,360px)}
+figure.psa figcaption{font-style:normal;max-width:52ch}
+/* Two things side by side, stacking on a phone. Owner, 2026-08-03: paired media
+   must be THE SAME HEIGHT. Left to itself a 4:3 photo beside a 16:9 clip lands two
+   different heights and the row reads as a mistake, so the media box is fixed and
+   the content fits inside it: `cover` for photographs and clips, `contain` for the
+   paper mockup, which is a transparent cut-out that must not be cropped. Captions
+   are free to run to different lengths below it -- what has to line up is the
+   pictures. */
+.pair{--pair-h:clamp(230px,27vw,360px);
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;
   margin:var(--gap-figure) 0}
 .pair figure{margin:0}
+.pair figure img,.pair figure video{height:var(--pair-h);width:100%;object-fit:cover}
+.pair figure.plate img{object-fit:contain;max-width:100%}
 @media (max-width:620px){ .pair{grid-template-columns:1fr} }
 
 /* ── FAQ ──────────────────────────────────────────────────────────────────── */
