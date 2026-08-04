@@ -1,0 +1,221 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   RMMF site — ONE stylesheet for all three pages.
+
+   Owner, 2026-08-03: "Formatting is inconsistent across the pages, please fix
+   this. Be very intentional and very consistent."
+
+   The cause was structural, not careless: each page carried its own inline
+   <style> block, so every change had to be made three times and any one that
+   was not drifted silently. Three copies of a rule is three chances to
+   disagree. There is now exactly one copy, and a page can only differ from
+   another page by using a different class.
+
+   Tokens mirror Business/Marketing/Brand/BRAND_POSITIONING.md §7 and the
+   `final` card theme in Collateral/build_business_card.py. ../Brand/check_brand.py
+   compares them BY VALUE and fails the build if they drift. Change them in both
+   or in neither.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  color-scheme: light dark;
+  --linen:#F4EDDD;      /* card ground */
+  --ink:#2A2418;
+  --brick:#9C3B22;      /* accent — rules, wordmark, links */
+  --pine:#37543F;       /* accent2 — quiet labels */
+  --bg:var(--linen); --panel:#FBF6EA; --line:#DCD0B6; --muted:#5F5747;
+  --maxw:1080px; --measure:70ch;
+  --serif: Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",
+           "Times New Roman",serif;
+  /* One vertical rhythm for every page. Sections, figures and paragraph gaps
+     are all multiples of these, which is what "consistent" actually means. */
+  --gap-section:46px; --gap-para:22px; --gap-figure:30px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#17160F; --panel:#1E1C14; --line:#3A3527; --ink:#EDE5D2;
+         --muted:#A79D87; --brick:#D2743F; --pine:#8FB69C; }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:19px/1.62 var(--serif);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img,video{max-width:100%;height:auto;display:block}
+a{color:var(--brick)}
+a:focus-visible,.btn:focus-visible,summary:focus-visible{
+  outline:2px solid var(--brick); outline-offset:3px; border-radius:2px;
+}
+a.skip{position:absolute;left:-9999px;top:0;background:var(--pine);color:#fff;
+  padding:10px 16px;border-radius:0 0 8px 0;z-index:20}
+a.skip:focus{left:0}
+strong{font-weight:700}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:26px 22px 40px}
+
+/* ── The sheet: the card's double rule wraps the WHOLE page, so the site reads
+      as one printed object rather than a bordered header on an ordinary web
+      page. Identical on all three pages. ───────────────────────────────────── */
+.sheet{position:relative;border:1.6px solid var(--brick);
+  box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
+  padding:0 clamp(20px,4vw,52px) clamp(26px,4vw,44px);background:var(--bg);
+  overflow:hidden}
+/* The gill tile is transparent linework; the white ground and the cap-body fills
+   are keyed out by Brand/pattern/export_backgrounds.py. Opacity lives here because
+   the right value differs by scheme, and dark mode inverts rather than shipping a
+   second file. */
+.sheet::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url("gills.png") repeat;background-size:270px 270px;opacity:.075;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 clamp(300px,34vw,470px),
+    rgba(0,0,0,.42) calc(clamp(300px,34vw,470px) + 240px),rgba(0,0,0,.42) 100%);
+  mask-image:linear-gradient(180deg,#000 0,#000 clamp(300px,34vw,470px),
+    rgba(0,0,0,.42) calc(clamp(300px,34vw,470px) + 240px),rgba(0,0,0,.42) 100%)}
+.sheet>*{position:relative;z-index:1}
+@media (prefers-color-scheme: dark){ .sheet::before{opacity:.13;filter:invert(1)} }
+
+/* ── Nav. Same markup, same rules, every page. ─────────────────────────────── */
+.nav{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;padding:16px 0 0;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase}
+.nav-mark{color:var(--pine);text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:20px}
+.nav-links a{color:var(--pine);text-decoration:none;padding-bottom:2px;
+  border-bottom:1px solid transparent}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--brick);
+  border-bottom-color:var(--brick)}
+
+/* ── Masthead. `.hero` is the home page's full-bleed version; `.crest` is the
+      quieter one the other two pages use. Same parts, two sizes — which is the
+      distinction the pages are allowed to have. ───────────────────────────── */
+.hero,.crest{position:relative;margin:0 calc(-1 * clamp(20px,4vw,52px));
+  text-align:center;border-bottom:1px solid var(--line)}
+.hero{padding:clamp(38px,6vw,68px) 22px clamp(30px,4vw,46px)}
+.crest{padding:clamp(26px,4vw,44px) 22px clamp(22px,3vw,32px)}
+.emblem{margin:0 auto 22px}
+.hero .emblem{width:clamp(86px,11vw,116px)}
+.crest .emblem{width:clamp(64px,8vw,84px);margin-bottom:16px}
+@media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
+.wordmark{font-size:clamp(15px,2.5vw,23px);letter-spacing:.22em;color:var(--brick);
+  margin:0 0 16px;font-weight:400}
+.crest .wordmark{font-size:clamp(13px,1.9vw,17px);margin-bottom:14px}
+.lozenge{display:flex;align-items:center;justify-content:center;gap:14px;
+  margin:0 auto 22px;max-width:340px;color:var(--pine)}
+.lozenge span{flex:1;height:1px;background:currentColor;opacity:.6}
+.lozenge b{width:7px;height:7px;background:var(--brick);transform:rotate(45deg)}
+h1{font-size:clamp(29px,4.6vw,46px);line-height:1.12;margin:0 0 18px;font-weight:400;
+  letter-spacing:-.005em}
+.crest h1{font-size:clamp(25px,3.4vw,34px);margin-bottom:0}
+.hero p,.crest p{margin:0 auto;max-width:34em;color:var(--muted);
+  font-size:clamp(17px,1.6vw,20px)}
+/* `.hero p` is (0,1,1) and `.est` alone is (0,1,0), so the margin below never
+   applied and the est line sat on top of the sub-head. Specificity, not taste. */
+.hero p.est,.crest p.est{margin-top:28px;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--pine)}
+
+/* ── Sections. ONE divider, not two (owner, 2026-08-03).
+
+      The section used to carry a bottom border AND the heading carried a hairline
+      running out to the right, so every boundary was drawn twice — once under the
+      section and once beside its title. The heading rule is the better of the two,
+      because it attaches the divider to the thing it is dividing, so the section
+      border is gone. A page with no headings therefore has no rules at all, which
+      is exactly what the About page wants. ─────────────────────────────────── */
+section{padding:var(--gap-section) 0}
+h2{margin:0 0 22px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pine);font-weight:700;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.body{max-width:var(--measure)}
+.body>*:first-child{margin-top:0}
+.body>*:last-child{margin-bottom:0}
+.body p{margin:0 0 var(--gap-para)}
+/* The one place a second typeface earns its keep: the opening line of a section,
+   set larger and looser so the eye has somewhere to land. */
+.lede{font-size:1.18em;line-height:1.45;color:var(--ink)}
+@media (max-width:860px){
+  section{padding:34px 0}
+  h2{margin:0 0 16px}
+}
+
+/* ── Long-form pages (About). No headings, so no rules; prose flows and the
+      pictures do the sectioning. ─────────────────────────────────────────── */
+.longform{max-width:var(--measure);margin:0 auto;padding:var(--gap-section) 0}
+.longform p{margin:0 0 var(--gap-para)}
+.longform p.signoff{margin-top:30px;font-style:italic;color:var(--pine)}
+
+/* ── Figures. One treatment, used everywhere. ─────────────────────────────── */
+figure{margin:var(--gap-figure) 0;text-align:center}
+figure img,figure video{margin:0 auto;border:1px solid var(--line)}
+figcaption{margin-top:10px;font-size:14px;color:var(--muted);font-style:italic;
+  max-width:52ch;margin-left:auto;margin-right:auto}
+figure.narrow img,figure.narrow video{max-width:min(100%,420px)}
+figure.plate img{max-width:min(100%,420px);border:0}
+/* Two things side by side, stacking on a phone. */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;
+  margin:var(--gap-figure) 0}
+.pair figure{margin:0}
+@media (max-width:620px){ .pair{grid-template-columns:1fr} }
+
+/* ── FAQ ──────────────────────────────────────────────────────────────────── */
+details{border-top:1px solid var(--line);padding:16px 0}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--brick);font-weight:400}
+details[open] summary::after{content:"\2212"}
+details p{margin:12px 0 0;color:var(--muted)}
+
+/* ── Draft-only apparatus: asset slots, notes, citation markers and the source
+      list. All on ONE gate (`body.clean`), set by the inline script on any real
+      host. Visible when the owner opens the page locally or with ?draft=1. ── */
+.slot,.todo{display:block;border:1.5px dashed var(--pine);padding:18px;
+  margin:22px 0 0;color:var(--pine);font-size:15px;line-height:1.5;
+  background:var(--panel)}
+.todo{font-size:14px;padding:16px}
+.slot b,.todo b{display:block;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px}
+.slot i,.todo i{display:block;font-style:normal;color:var(--muted);font-size:13px;
+  margin-top:6px}
+body.clean .slot,body.clean .todo{display:none}
+
+.src{font-size:.62em;vertical-align:super;line-height:0;margin-left:1px;
+  padding:0 2px;text-decoration:none;color:var(--brick);font-weight:700}
+.src::before{content:"["} .src::after{content:"]"}
+body.clean .src,body.clean .sources{display:none}
+.sources ol{margin:0 0 var(--gap-para);padding-left:1.3em;font-size:15px;
+  line-height:1.55;color:var(--muted)}
+.sources li{margin:0 0 12px}
+.sources li q{quotes:"\201C" "\201D"}
+.sources .quiet{font-size:14.5px;line-height:1.55}
+
+/* ── Call to action ───────────────────────────────────────────────────────── */
+.cta{border:1.6px solid var(--brick);
+  box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
+  padding:clamp(26px,4vw,42px);margin:var(--gap-section) 0 0;background:var(--panel);
+  text-align:center}
+.cta h2{margin:0 0 10px;color:var(--brick);display:block}
+.cta h2::after{display:none}
+.cta h3{font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:0 0 14px;
+  font-weight:400}
+.cta p{color:var(--muted);margin:0 auto 24px;max-width:46ch}
+.btn{display:inline-block;background:var(--brick);color:#fff;text-decoration:none;
+  font-weight:700;padding:14px 30px;transition:filter .18s ease,transform .18s ease}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.quiet{font-size:16px;color:var(--muted)}
+
+/* ── Embedded form (survey page) ──────────────────────────────────────────── */
+.embed{margin:var(--gap-section) 0 0;border:1px solid var(--line);background:var(--panel)}
+.embed iframe{display:block;width:100%;height:1500px;border:0}
+
+footer{margin:var(--gap-section) 0 0;padding:26px 0 0;border-top:1px solid var(--line);
+  font-size:15px;color:var(--muted);text-align:center}
+footer p{margin:0 0 6px}
+
+/* Scoped to .js: without scripting the sections are simply visible. An earlier
+   version hid them in CSS and revealed them from JS, which meant one script
+   error blanked everything below the hero. */
+@media (prefers-reduced-motion: no-preference){
+  .js .fade{opacity:0;transform:translateY(10px);
+    transition:opacity .45s ease,transform .45s ease}
+  .js .fade.in{opacity:1;transform:none}
+}

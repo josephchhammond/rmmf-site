@@ -5,127 +5,34 @@
 <script>document.documentElement.className="js"</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About — Rocky Mountain Mushroom Farm</title>
-<meta name="description" content="Joey Hammond, Rocky Mountain Mushroom Farm: how a Colorado grow-block company started, and how to get in touch.">
+<meta name="description" content="How Rocky Mountain Mushroom Farm started: a college roommate's cubes, a revived mycology club, five years of tests, and a 470-page plan.">
 <meta name="theme-color" content="#f4eddd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17160f" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://rockymountainmushroomfarm.com/about.html">
-<meta name="robots" content="index,follow">
+<meta property="og:title" content="About — Rocky Mountain Mushroom Farm">
+<meta property="og:description" content="How this started, and what five years of tests turned into.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://rockymountainmushroomfarm.com/about.html">
+<meta property="og:image" content="https://rockymountainmushroomfarm.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/emblem.png">
-<style>
-  /* Tokens duplicated from index.html on purpose: three files, no build step, no
-     stylesheet request on the critical path. ../Brand/check_brand.py compares them by
-     value, so they cannot drift silently. */
-  :root{
-    color-scheme: light dark;
-    --linen:#F4EDDD; --ink:#2A2418; --brick:#9C3B22; --pine:#37543F;
-    --bg:var(--linen); --panel:#FBF6EA; --line:#DCD0B6; --muted:#5F5747;
-    --maxw:1080px; --measure:70ch;
-    --serif: Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",
-             "Times New Roman",serif;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#17160F; --panel:#1E1C14; --line:#3A3527; --ink:#EDE5D2;
-           --muted:#A79D87; --brick:#D2743F; --pine:#8FB69C; }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.62 var(--serif);
-       -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  img,video{max-width:100%;height:auto;display:block}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 22px 40px}
-  a{color:var(--brick)}
-  a:focus-visible{outline:2px solid var(--brick);outline-offset:3px}
-  .sheet{position:relative;border:1.6px solid var(--brick);
-    box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
-    padding:0 clamp(20px,4vw,52px) clamp(26px,4vw,44px);background:var(--bg);
-    overflow:hidden}
-  .sheet::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:url("assets/gills.png") repeat;background-size:270px 270px;opacity:.06}
-  .sheet>*{position:relative;z-index:1}
-  @media (prefers-color-scheme: dark){ .sheet::before{opacity:.11;filter:invert(1)} }
-
-  header{text-align:center;padding:clamp(30px,5vw,50px) 0 clamp(22px,3vw,32px);
-    border-bottom:1px solid var(--line);
-    margin:0 calc(-1 * clamp(20px,4vw,52px)) 0}
-  .emblem{width:84px;margin:0 auto 16px}
-  @media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
-  .wordmark{font-size:15px;letter-spacing:.22em;color:var(--brick);margin:0 0 14px}
-  h1{font-size:clamp(26px,3.6vw,38px);line-height:1.15;margin:0;font-weight:400}
-
-  section{display:grid;grid-template-columns:190px minmax(0,1fr);gap:0 46px;
-    padding:50px 0;border-bottom:1px solid var(--line)}
-  section:last-of-type{border-bottom:0}
-  h2{grid-column:1;margin:6px 0 0;font-size:13px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--pine);font-weight:700}
-  .body{grid-column:2;max-width:var(--measure)}
-  .body>*:first-child{margin-top:0}
-  .body>*:last-child{margin-bottom:0}
-  .body p{margin:0 0 22px}
-  @media (max-width:860px){
-    section{grid-template-columns:1fr;gap:0;padding:38px 0}
-    h2{grid-column:1;margin:0 0 14px}
-    .body{grid-column:1}
-  }
-
-  /* The bioreactor clip was shot against a lab wall whose top-right corner was a hard
-     white panel that punched a hole in the page. build_media.py crops the wall out and
-     grades the highlights down to linen; this mask does the rest, dissolving the
-     rectangle into whatever the page ground is. It has to be CSS, not baked in: the
-     ground is linen in light mode and near-black in dark mode. */
-  figure{margin:30px 0 0}
-  figure video,figure img{width:100%}
-  figure.clip video{
-    -webkit-mask-image:radial-gradient(ellipse 84% 76% at 50% 48%,
-      #000 60%,rgba(0,0,0,.62) 85%,transparent 100%);
-    mask-image:radial-gradient(ellipse 84% 76% at 50% 48%,
-      #000 60%,rgba(0,0,0,.62) 85%,transparent 100%);
-  }
-  figcaption{font-size:15px;line-height:1.5;color:var(--muted);padding:10px 4px 2px}
-  .media-row{display:grid;gap:20px;grid-template-columns:minmax(0,186px) minmax(0,1fr);
-    align-items:center;margin:26px 0 0}
-  .media-row figure{margin:0}
-  @media (max-width:640px){ .media-row{grid-template-columns:1fr} }
-  .portrait{width:150px;border-radius:50%;border:1px solid var(--line);float:right;
-    margin:4px 0 18px 26px}
-  @media (max-width:520px){ .portrait{float:none;margin:0 auto 20px} }
-
-  /* Draft-only, same gate as index.html: these are the beats to write, not copy. A
-     grower must never land on a page that shows them the outline instead of the story,
-     so `body.clean` hides every one of them on a live host. Fill one in, delete its
-     .todo, and it ships. */
-  .todo{display:block;border:1.5px dashed var(--pine);padding:16px 20px;margin:0 0 18px;
-    color:var(--pine);font-size:15.5px;line-height:1.55;background:var(--panel)}
-  .todo b{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    margin-bottom:6px}
-  .todo i{display:block;font-style:normal;color:var(--muted);font-size:14px;margin-top:6px}
-  body.clean .todo{display:none}
-  .signoff{margin-top:26px;font-style:italic;color:var(--pine)}
-  body.clean .draftonly{display:none}
-
-  .cta{border:1.6px solid var(--brick);box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
-    padding:clamp(24px,4vw,38px);margin:46px 0 0;background:var(--panel);text-align:center}
-  .cta h3{font-size:clamp(20px,2.4vw,27px);line-height:1.2;margin:0 0 12px;font-weight:400}
-  .cta p{color:var(--muted);margin:0 auto 20px;max-width:46ch}
-  .btn{display:inline-block;background:var(--brick);color:#fff;text-decoration:none;
-    font-weight:700;padding:13px 28px}
-  .quiet{font-size:16px;color:var(--muted)}
-  footer{margin:40px 0 0;padding:24px 0 0;border-top:1px solid var(--line);
-    font-size:15px;color:var(--muted);text-align:center}
-  footer p{margin:0 0 6px}
-</style>
+<link rel="apple-touch-icon" href="assets/emblem.png">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#story">Skip to the story</a>
 <div class="wrap">
  <div class="sheet">
 
   <nav class="nav">
     <a class="nav-mark" href="index.html">Rocky&nbsp;Mountain Mushroom&nbsp;Farm</a>
     <span class="nav-links">
-      <a href="about.html">About</a>
+      <a href="about.html" aria-current="page">About</a>
       <a href="survey.html">Survey</a>
     </span>
   </nav>
 
-  <header>
+  <header class="crest">
     <div class="emblem">
       <img src="assets/emblem.png" width="84" height="84" decoding="async"
            alt="Rocky Mountain Mushroom Farm — woodcut oyster-mushroom seal">
@@ -134,155 +41,150 @@
     <h1>A bit about me</h1>
   </header>
 
-  <section>
-    <h2>How I got here</h2>
-    <div class="body">
-      <img class="portrait" src="assets/headshot.jpg" width="150" height="150"
-           loading="lazy" decoding="async" alt="Joey Hammond, founder">
+  <!-- No section headings and no rules on this page (owner, 2026-08-03: "remove my
+       headshot, the section lines, and the section titles"). The pictures do the
+       sectioning. Because the divider in site.css belongs to the heading rather than
+       to the section, removing the headings removes the rules automatically -- there
+       is nothing to switch off. -->
+  <div class="longform" id="story">
 
-      <p>About 6 years ago, a college roommates went back home for a few weeks and
-      left me with some cubes that he was trying to grow for the first time. They were
-      struggling from the start so I watched every Youtube video and scoured subreddits
-      trying to save them. None of them made it, but I ended up getting really
-      fascinated by it all. Like a lot of people I went down the rabbit hole and got
-      immersed in it - for me it was the microbiology at play, the science of the
-      psychedelics and medicinal side, and how things are actually grown
-      agriculturally</p>
+    <p>About 6 years ago, a college roommate went back home for a few weeks and left me
+    with some cubes that he was trying to grow for the first time. They were struggling
+    from the start so I watched every Youtube video and scoured subreddits trying to save
+    them. None of them made it, but I ended up getting really fascinated by it all. Like
+    a lot of people I went down the rabbit hole and got immersed in it - for me it was
+    the microbiology at play, the science of the psychedelics and medicinal side, and how
+    things are actually grown agriculturally</p>
 
-      <div class="slot"><b>Asset slot — the student farm</b>
-        The student experimental farm at Cal Poly.
-        <i>Goes here, between the cubes and the club.</i></div>
+    <figure>
+      <img src="assets/beds.jpg" width="700" height="525" loading="lazy"
+           alt="Cultivation beds at the student experimental farm">
+      <figcaption>The student experimental farm at Cal Poly.</figcaption>
+    </figure>
+    <div class="todo"><b>⬖ Owner: caption</b>
+      Placeholder caption above. Say what you want it to read.</div>
 
-      <p>A few months after that I ended up reviving a dead mycology club at my college
-      and we setup a lab and growspace and garden giant/plant beds and a greenhouse at a
-      plot of land on campus with the most out of tune piano you will ever hear; we went
-      foraging together and would cook dishes together with what we found - it was a
-      great community with some of the best and most unique people I ever
-      encountered</p>
+    <p>A few months after that I ended up reviving a dead mycology club at my college and
+    we setup a lab and growspace and garden giant/plant beds and a greenhouse at a plot
+    of land on campus with the most out of tune piano you will ever hear; we went
+    foraging together and would cook dishes together with what we found - it was a great
+    community with some of the best and most unique people I ever encountered</p>
 
-      <div class="slot"><b>Asset slot — the first morel</b>
-        Annotated photo: finding the first morel in a burn scar, with the dog, at a
-        location Tristen shared.
-        <i>Foraging is the credential that reads as real to this audience and costs
-        nothing to claim.</i></div>
-
-      <p>As an engineer, mushroom cultivation always seemed like an unsolved problem -
-      the raw ingredients to grow something like an oyster mushroom are essentially
-      free, sawdust and soy hulls are ag waste, the cost all comes from the process
-      itself. Gourmet mushrooms aren't culinary staples precisely because they cost so
-      much, most people don't even realize their protein content or know how to cook
-      them well because they end up being a rarity in the average household</p>
+    <div class="pair">
+      <figure>
+        <video src="assets/morel_dinner.mp4" poster="assets/morel_dinner_poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="Top-down timelapse of cooking a morel dinner"></video>
+        <figcaption>Making dinner with what we found.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/morel.jpg" width="620" height="827" loading="lazy"
+             alt="Joey holding his first foraged morel">
+        <figcaption>My first morel, from that same spot.</figcaption>
+      </figure>
     </div>
-  </section>
+    <div class="todo"><b>⬖ Owner: two captions, and a sentence if you want one</b>
+      You asked for a spot to explain both of these. Left is the top-down timelapse of
+      the morel dinner with the club; right is you with your first foraged morel from
+      the same location.
+      <i>Write either as captions, or as a short paragraph that sits under the pair —
+      say which and I'll set it that way.</i></div>
 
-  <section>
-    <h2>The work</h2>
-    <div class="body">
+    <p>As an engineer, mushroom cultivation always seemed like an unsolved problem - the
+    raw ingredients to grow something like an oyster mushroom are essentially free,
+    sawdust and soy hulls are ag waste, the cost all comes from the process itself.
+    Gourmet mushrooms aren't culinary staples precisely because they cost so much, most
+    people don't even realize their protein content or know how to cook them well because
+    they end up being a rarity in the average household</p>
 
-      <p>I spent the next 5 years or so trying to solve this, probing at the edges
-      with little tests and research to try to find a jump, not just an incremental
-      improvement but something that could really change the cultivation process. I
-      slowly built up a microbiology lab and ran around 5 dozen tests while working -
-      ironically - on contamination control for hypergolic propulsion systems (rocket
-      shit, stable boom is good but dust makes big boom and that's probably bad)</p>
+    <p>I spent the next 5 years or so trying to solve this, probing at the edges with
+    little tests and research to try to find a jump, not just an incremental improvement
+    but something that could really change the cultivation process. I slowly built up a
+    microbiology lab and ran around 5 dozen tests while working - ironically - on
+    contamination control for hypergolic propulsion systems (rocket shit, stable boom is
+    good but dust makes big boom and that's probably bad)</p>
 
-      <div class="media-row">
-        <figure class="clip">
-          <video src="assets/bioreactor.mp4" poster="assets/bioreactor_poster.jpg"
-                 autoplay muted loop playsinline preload="metadata"
-                 aria-label="Aerated blue oyster liquid culture running in a bioreactor"></video>
-        </figure>
-        <div>
-          <p>The video is one of the prettiest of these tests, one of the 6 or so
-          successful runs with an old bioreactor i fixed up growing a blue oyster
-          mushroom LC. I modified the vessel to be a column airlift to test a low shear,
-          high aeration environment and a custom broth to get some data on mycelial
-          flocculation, cellular viability, and growth rates.</p>
-        </div>
-      </div>
+    <p>The video below is one of the prettiest of these tests, one of the 6 or so
+    successful runs with an old Bioflo 3000 i fixed up growing a blue oyster mushroom LC.
+    I modified the vessel to be a column airlift to test a low shear, high aeration
+    environment and a custom broth to get some data on mycelial flocculation, cellular
+    viability, and growth rates. Probably the least pretty test was getting covered in
+    cold lime water and straw, then running to the shower. I was trying to pipe cold lime
+    in and out of a 55 gallon drum (that I bought from a man named Trash) for a
+    half-baked pasteurize-in-place system, forgot for the 20th time that things expand
+    when you get them wet, and climbed up on the shelf to try to get the lid on and the
+    whole shelf collapsed and my plumbing shattered when it hit the floor. Fun 2AM
+    activity before work the next day</p>
 
-      <p style="margin-top:26px">Probably the least pretty test was getting covered in
-      cold lime water and straw, then running to the shower. I was trying to pipe cold
-      lime in and out of a 55 gallon drum (that I bought from a man named Trash) for a
-      half-baked pasteurize-in-place system, forgot for the 20th time that things expand
-      when you get them wet, and climbed up on the shelf to try to get the lid on and the
-      whole shelf collapsed and my plumbing shattered when it hit the floor. Fun 2AM
-      activity before work the next day</p>
-
-      <div class="slot"><b>Asset slot — the test vials</b>
-        Stage A vials on the rack, natural light.
-        <i>The single highest-value image missing from the whole site.</i></div>
-
-      <div class="todo"><b>⬖ Owner: the research paragraph goes here</b>
-        A proposed paragraph covering the paper, the filing and the current stage — the
-        one carrying the approved &ldquo;mycelial enzymatic expression&rdquo; wording —
-        is drafted beside your verbatim text in
-        <b>Business/Marketing/Website/ABOUT_ME_DRAFT.md §2</b>, for you to mesh in your
-        own words.
-        <i>It deliberately overlaps the five-years paragraph above; merge them into one
-        rather than running both.</i></div>
-
-      <p>Through all of this, I've been narrowing in on an architecture that is far
-      different from current cultivation practices and that I believe will genuinely
-      change the way we grow mushrooms and make them a culinary staple in the US. So now
-      that I've transitioned into finishing up development tests, any and all feedback on
-      your farms would be extremely helpful and I'd love if you were to join me on this
-      journey :)</p>
-
-      <p class="signoff">Mush love,<br>Joey</p>
+    <div class="pair">
+      <figure>
+        <video src="assets/bioreactor.mp4" poster="assets/bioreactor_poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="Aerated blue oyster liquid culture running in a bioreactor"></video>
+        <figcaption>The Bioflo 3000, running blue oyster liquid culture.</figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="assets/paper.png" width="560" height="696" loading="lazy"
+             alt="A fanned stack of pages from the technical plan">
+        <figcaption>470 pages, a little over 500 sources.</figcaption>
+      </figure>
     </div>
-  </section>
+    <div class="slot"><b>Asset slot — the vials</b>
+      Your note said this row should be bioreactor, then vials, then the paper. The vials
+      photo does not exist yet: Stage A vials on the rack, natural light.
+      <i>When it arrives this becomes a row of three.</i></div>
+    <div class="todo"><b>⬖ Owner: the bioreactor clip needs re-cutting</b>
+      You flagged it as needing to be uncropped. The current mp4 was cropped past a hard
+      white lab wall by build_media.py.
+      <i>Send the original clip and I'll re-cut it without the crop; the grade that keeps
+      pure white from blowing out should stay.</i></div>
 
-  <section>
-    <h2>Unrelated</h2>
-    <div class="body">
-      <p>Also check out this mushroom sleeve I have, it has 9 of my favorite mushrooms
-      (and snail and frog!). Heather at Zeitgeist Studios in Denver did the work and I
-      can't recommend her enough</p>
+    <p>The microbiology research was by far the largest investment, and through the years
+    wrote a 470 page research paper with a little over 500 sources of backing on
+    microbiology and mycelial enzymatic expression that laid the groundwork for a patent
+    submission earlier this year. Through all of this, I've been narrowing in on an
+    architecture that is far different from current cultivation practices and that I
+    believe will genuinely change the way we grow mushrooms and make them a culinary
+    staple in the US. So now that I've transitioned into finishing up development tests,
+    any and all feedback on your farms would be extremely helpful and I'd love if you
+    were to join me on this journey :)</p>
 
-      <div class="slot"><b>Asset slot — the sleeve</b>
-        Video or photo of the tattoo.
-        <i>Check before it ships: nothing else in frame may show method, tooling or a
-        label.</i></div>
-    </div>
-  </section>
+    <p class="signoff">Mush love,<br>Joey</p>
+
+    <p style="margin-top:36px">Also check out this mushroom sleeve I have, it has 9 of my
+    favorite mushrooms (and snail and frog!). Heather at Zeitgeist Studios in Denver did
+    the work and I can't recommend her enough</p>
+
+    <figure>
+      <img src="assets/sleeve.jpg" width="700" height="525" loading="lazy"
+           alt="A mushroom tattoo sleeve featuring nine species, a snail and a frog">
+    </figure>
+
+  </div>
 
   <div class="cta">
-    <h3>Get in touch</h3>
-    <p>If you grow commercially, the survey is the most useful thing you can send me. If
-    you'd rather just write, that works too.</p>
-    <p><a class="btn" href="survey.html">Take the grower survey</a></p>
-    <p class="quiet" style="margin:20px auto 0">
+    <h2>Growers</h2>
+    <h3>Tell me how your substrate really works.</h3>
+    <p>About 3 minutes, mostly taps. The growers who answer it are the ones I'll come to
+    first when there are trial blocks to give away.</p>
+    <p><a class="btn" href="survey.html">Take the survey</a></p>
+    <p class="quiet" style="margin:22px auto 0">Or just email me:
       <a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
   </div>
 
   <footer>
-    <p><a href="index.html">&larr; Rocky Mountain Mushroom Farm</a></p>
     <p><strong>Rocky Mountain Mushroom Farm LLC</strong> &nbsp;·&nbsp; Colorado
-       &nbsp;·&nbsp; formed 2025</p>
-    <p class="quiet" style="margin-top:10px;font-size:13px">In development; nothing here
+       &nbsp;·&nbsp; Est. 2025, formed 2025 &nbsp;·&nbsp;
+       <a href="index.html">Home</a></p>
+    <p><a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
+    <p class="quiet" style="margin-top:12px;font-size:13px">In development; nothing here
     is an offer for sale.</p>
   </footer>
 
  </div>
 </div>
 
-<script>
-(function(){
-  // Same gate as index.html: the outline is for you, not for a grower. file:// and
-  // localhost show it, a real host hides it, ?draft=1 forces it on anywhere.
-  var q = new URLSearchParams(location.search);
-  var mine = location.protocol === 'file:' || /^(localhost|127\.|\[::1\])/.test(location.hostname);
-  if (!(q.has('draft') || (mine && !q.has('clean')))) document.body.classList.add('clean');
-
-  var v = document.querySelector('video');
-  if (v && 'IntersectionObserver' in window){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting) { v.play().catch(function(){}); } else { v.pause(); } });
-    }, {threshold:0.15}).observe(v);
-  }
-})();
-</script>
+<script src="assets/site.js"></script>
 <!-- Cloudflare Web Analytics. Free, cookieless, no consent banner needed.
      Token supplied by the owner 2026-08-03. Same line on all three pages. -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"

@@ -17,6 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/emblem.png">
 <link rel="apple-touch-icon" href="assets/emblem.png">
+<link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization",
  "name":"Rocky Mountain Mushroom Farm LLC",
@@ -31,205 +32,6 @@
  "description":"Develops ready-to-fruit mushroom grow blocks for commercial growers of oyster, lion's mane and shiitake.",
  "knowsAbout":["mushroom substrate","ready-to-fruit grow blocks","oyster mushrooms","shiitake","lion's mane"]}
 </script>
-<style>
-  /* ── Brand tokens. These mirror Business/Marketing/Brand/BRAND_POSITIONING.md §7
-       and the `final` business-card theme in Collateral/build_business_card.py, so the
-       card and the page are the same object. ../Brand/check_brand.py compares them by
-       VALUE and fails the build if they drift. Change them in both or in neither. ── */
-  :root{
-    color-scheme: light dark;
-    --linen:#F4EDDD;      /* card ground */
-    --ink:#2A2418;
-    --brick:#9C3B22;      /* accent — rules, wordmark, links */
-    --pine:#37543F;       /* accent2 — quiet labels */
-    --bg:var(--linen); --panel:#FBF6EA; --line:#DCD0B6; --muted:#5F5747;
-    --maxw:1080px; --measure:70ch;
-    --serif: Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",
-             "Times New Roman",serif;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#17160F; --panel:#1E1C14; --line:#3A3527; --ink:#EDE5D2;
-           --muted:#A79D87; --brick:#D2743F; --pine:#8FB69C; }
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font:19px/1.62 var(--serif);
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  img,video{max-width:100%;height:auto;display:block}
-
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:26px 22px 40px}
-  a{color:var(--brick)}
-  a:focus-visible,.btn:focus-visible,summary:focus-visible{
-    outline:2px solid var(--brick); outline-offset:3px; border-radius:2px;
-  }
-  a.skip{position:absolute;left:-9999px;top:0;background:var(--pine);color:#fff;
-    padding:10px 16px;border-radius:0 0 8px 0;z-index:20}
-  a.skip:focus{left:0}
-
-  /* Top nav (owner, 2026-08-03: "we need to add an about me at the top too so its
-     clearly accessible"). About used to be reachable only from a FAQ answer and the
-     footer, which on a one-screen page means most people never saw it existed. */
-  .nav{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-    flex-wrap:wrap;padding:16px 0 0;font-size:13px;letter-spacing:.14em;
-    text-transform:uppercase}
-  .nav-mark{color:var(--pine);text-decoration:none;font-weight:700}
-  .nav-mark[aria-current]{color:var(--brick)}
-  .nav-links{display:flex;gap:20px}
-  .nav-links a{color:var(--pine);text-decoration:none;padding-bottom:2px;
-    border-bottom:1px solid transparent}
-  .nav-links a:hover,.nav-links a[aria-current]{color:var(--brick);
-    border-bottom-color:var(--brick)}
-
-
-  /* ── The sheet. The card's double rule now wraps the WHOLE page rather than just
-       the masthead (owner, 2026-07-31), so the site reads as one printed object --
-       a seed packet, a field-guide plate -- instead of a bordered header sitting on
-       top of an ordinary web page. ── */
-  .sheet{position:relative;border:1.6px solid var(--brick);
-    box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
-    padding:0 clamp(20px,4vw,52px) clamp(26px,4vw,44px);background:var(--bg);
-    overflow:hidden}
-  /* The gill pattern, behind everything on the sheet rather than just the masthead.
-     assets/gills.png is a transparent tile of black linework -- the white ground and
-     the cap-body fills are keyed out by Brand/pattern/export_backgrounds.py, so the
-     only thing here is the drawing. Opacity lives in CSS because the right value
-     differs by scheme, and dark mode inverts the black to a warm light instead of
-     shipping a second file. */
-  .sheet::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:url("assets/gills.png") repeat;background-size:270px 270px;opacity:.075;
-    /* Full strength behind the masthead, then down to a whisper behind the reading.
-       A tint you can see while you read is a tint that is competing with the type. */
-    -webkit-mask-image:linear-gradient(180deg,#000 0,#000 clamp(300px,34vw,470px),
-      rgba(0,0,0,.42) calc(clamp(300px,34vw,470px) + 240px),rgba(0,0,0,.42) 100%);
-    mask-image:linear-gradient(180deg,#000 0,#000 clamp(300px,34vw,470px),
-      rgba(0,0,0,.42) calc(clamp(300px,34vw,470px) + 240px),rgba(0,0,0,.42) 100%)}
-  .sheet>*{position:relative;z-index:1}
-  @media (prefers-color-scheme: dark){
-    .sheet::before{opacity:.13;filter:invert(1)}
-  }
-
-  .hero{position:relative;margin:0 calc(-1 * clamp(20px,4vw,52px));
-    padding:clamp(38px,6vw,68px) 22px clamp(30px,4vw,46px);
-    text-align:center;border-bottom:1px solid var(--line)}
-  .emblem{width:clamp(86px,11vw,116px);margin:0 auto 22px}
-  @media (prefers-color-scheme: dark){ .emblem img{filter:invert(1)} }
-  .wordmark{font-size:clamp(15px,2.5vw,23px);letter-spacing:.22em;color:var(--brick);
-    margin:0 0 16px;font-weight:400}
-  .lozenge{display:flex;align-items:center;justify-content:center;gap:14px;
-    margin:0 auto 22px;max-width:340px;color:var(--pine)}
-  .lozenge span{flex:1;height:1px;background:currentColor;opacity:.6}
-  .lozenge b{width:7px;height:7px;background:var(--brick);transform:rotate(45deg)}
-  h1{font-size:clamp(29px,4.6vw,46px);line-height:1.12;margin:0 0 18px;font-weight:400;
-    letter-spacing:-.005em}
-  .hero p{margin:0 auto;max-width:34em;color:var(--muted);font-size:clamp(17px,1.6vw,20px)}
-  /* `.hero p` is (0,1,1) and `.est` alone is (0,1,0), so the margin below never
-     applied and the est line sat on top of the sub-head. Specificity, not taste. */
-  .hero p.est{margin-top:28px;font-size:13px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--pine)}
-
-  /* ── Section headings sit ON TOP of their own section (owner, 2026-08-03). They
-       used to occupy a fixed 190px left rail, which meant every short heading -- and
-       they are all short, because they are labels -- left a hole roughly the width of
-       a paragraph beside it, and the prose started a third of the way across the page
-       for no reason. The hairline rule running out to the right does the job the empty
-       column was doing: it separates the label from the reading without spending the
-       space. ── */
-  section{padding:46px 0;border-bottom:1px solid var(--line)}
-  section:last-of-type{border-bottom:0}
-  h2{margin:0 0 22px;font-size:13px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--pine);font-weight:700;
-    display:flex;align-items:center;gap:14px}
-  h2::after{content:"";flex:1;height:1px;background:var(--line)}
-  .body{max-width:var(--measure)}
-  .body>*:first-child{margin-top:0}
-  .body>*:last-child{margin-bottom:0}
-  .body p{margin:0 0 22px}
-  .lede{font-size:1.16em;line-height:1.45}
-  .chores{margin:0 0 22px;font-size:1.06em}
-  strong{font-weight:700}
-  @media (max-width:860px){
-    section{padding:36px 0}
-    h2{margin:0 0 16px}
-  }
-
-  details{border-top:1px solid var(--line);padding:16px 0}
-  details:first-of-type{border-top:0}
-  summary{cursor:pointer;font-weight:700;list-style:none}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";float:right;color:var(--brick);font-weight:400}
-  details[open] summary::after{content:"\2212"}
-  details p{margin:12px 0 0;color:var(--muted)}
-
-  /* Asset slots. Visible by default WHEN YOU ARE LOOKING AT THE PAGE (owner asked for
-     that, 2026-07-31) and hidden on the live site, where they would show a visitor a
-     set of dashed boxes explaining which of the page's claims have no evidence behind
-     them yet. The inline script below decides: file:// and localhost show them, a real
-     host does not, and ?draft=1 forces them on anywhere. */
-  .slot{display:block;border:1.5px dashed var(--pine);padding:20px;margin:26px 0 0;
-    color:var(--pine);font-size:15px;line-height:1.5;background:var(--panel)}
-  .slot b{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
-    margin-bottom:6px}
-  .slot i{display:block;font-style:normal;color:var(--muted);font-size:14px;margin-top:6px}
-  body.clean .slot{display:none}
-
-  /* Draft-only note, same gate as the asset slots. */
-  .todo{display:block;border:1.5px dashed var(--pine);padding:16px;margin:10px 0 0;
-    color:var(--pine);font-size:14px;line-height:1.5;background:var(--panel)}
-  .todo b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    margin-bottom:6px}
-  .todo i{display:block;font-style:normal;color:var(--muted);font-size:13px;
-    margin-top:6px}
-  body.clean .todo{display:none}
-
-  figure.plate{margin:26px 0 0;text-align:center}
-  figure.plate img{margin:0 auto;max-width:min(100%,420px)}
-  figure.plate figcaption{margin-top:10px;font-size:14px;color:var(--muted);
-    font-style:italic}
-
-  /* ── The citation apparatus, on the same draft-only gate as the asset slots. A
-       grower reading a one-page introduction should not meet footnote markers; the
-       owner checking whether a number is real should. So the markers and the source
-       list are the same object, both switched off by `body.clean`, which the script
-       at the bottom sets on any live host. The page therefore reads clean in public
-       and audits itself locally, with no second copy of the page to keep in sync. ── */
-  .src{font-size:.62em;vertical-align:super;line-height:0;margin-left:1px;
-    padding:0 2px;text-decoration:none;color:var(--brick);font-weight:700}
-  .src::before{content:"["} .src::after{content:"]"}
-  body.clean .src{display:none}
-  body.clean .sources{display:none}
-  .sources ol{margin:0 0 22px;padding-left:1.3em;font-size:15px;line-height:1.55;
-    color:var(--muted)}
-  .sources li{margin:0 0 12px}
-  .sources li q{quotes:"\201C" "\201D"}
-  .sources .quiet{font-size:14.5px;line-height:1.55}
-
-  .cta{border:1.6px solid var(--brick);box-shadow:0 0 0 2.6px var(--bg),0 0 0 3.4px var(--brick);
-    padding:clamp(26px,4vw,42px);margin:52px 0 0;background:var(--panel);text-align:center}
-  .cta h2{margin:0 0 10px;color:var(--brick);display:block}
-  .cta h2::after{display:none}
-  .cta h3{font-size:clamp(22px,2.6vw,30px);line-height:1.2;margin:0 0 14px;font-weight:400}
-  .cta p{color:var(--muted);margin:0 auto 24px;max-width:46ch}
-  .btn{display:inline-block;background:var(--brick);color:#fff;text-decoration:none;
-    font-weight:700;padding:14px 30px;transition:filter .18s ease,transform .18s ease}
-  .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .quiet{font-size:16px;color:var(--muted)}
-
-  footer{margin:44px 0 0;padding:26px 0 0;border-top:1px solid var(--line);
-    font-size:15px;color:var(--muted);text-align:center}
-  footer p{margin:0 0 6px}
-
-  /* Scoped to .js: without scripting the sections are simply visible. An earlier
-     version hid them in CSS and revealed them from JS, which meant one script error
-     blanked everything below the hero. */
-  @media (prefers-reduced-motion: no-preference){
-    .js .fade{opacity:0;transform:translateY(10px);
-      transition:opacity .45s ease,transform .45s ease}
-    .js .fade.in{opacity:1;transform:none}
-  }
-</style>
 </head>
 <body>
 <a class="skip" href="#talk">Skip to the grower survey</a>
@@ -237,7 +39,7 @@
  <div class="sheet">
 
   <nav class="nav">
-    <a class="nav-mark" href="index.html">Rocky&nbsp;Mountain Mushroom&nbsp;Farm</a>
+    <a class="nav-mark" href="index.html" aria-current="page">Rocky&nbsp;Mountain Mushroom&nbsp;Farm</a>
     <span class="nav-links">
       <a href="about.html">About</a>
       <a href="survey.html">Survey</a>
@@ -264,109 +66,77 @@
       cooling, inoculating, incubating, cleaning again.</p>
       <p>When Cornell surveyed 139 specialty growers, the top three barriers to growing
       the business were <strong>labor</strong>, <strong>production facilities</strong>,
-      and <strong>growing output to meet demand</strong>.<a class="src" href="#s1">1</a>
-</p>
-      <p>The ceiling isn't sales, and it's not know-how. It's the hours and the square
+      and <strong>growing output to meet demand</strong><a class="src" href="#s1">1</a>
+      — so the ceiling isn't sales, and it's not know-how. It's the hours and the square
       footage that go into making blocks. Cornell costed five indoor farms and found the
       same thing in the accounts: on the farms making their own blocks,
-      <strong>80% of what they spent went to labor</strong> and 20% to materials. On the
-      farms buying blocks ready to fruit, labor dropped to
-      <strong>42%</strong>.<a class="src" href="#s2">2</a></p>
-      <p>That's the part I'm aiming to build around.</p>
+      <strong>80% of what they spent went to labor</strong> and 20% to materials, while
+      on the farms buying blocks ready to fruit labor dropped to
+      <strong>42%</strong>.<a class="src" href="#s2">2</a> That's the part I'm aiming to
+      build around.</p>
     </div>
   </section>
 
   <section class="fade">
     <h2>What I'm building</h2>
     <div class="body">
-      <p>A <strong>ready-to-fruit block you buy instead of make</strong>. Prep hours go
-      back into growing and selling. Prep space becomes fruiting space.</p>
-      <p>The target is to cost less than making your own <strong>once your own hours
-      are in the number</strong>. That qualifier is the whole claim, and I won't put a
-      figure on it until the bench work says what the figure is.</p>
-      <p>To be clear about what I want and what I don't: the part I'd take off your
-      plate is the part that gets cheaper the bigger it gets, which is making the block.
-      Fruiting, packing and selling are local problems, and they stay yours.</p>
-      <p>Right now I'm finishing development testing, building the first prototypes of
-      the machinery, working through National Science Foundation funding, and talking to
-      growers so that what gets built is grounded in what the industry actually needs
-      rather than in what I assume it needs.</p>
+      <p class="lede">A ready-to-fruit block you buy instead of make. Hours go back into
+      growing and selling, and more square footage can go towards fruiting.</p>
+      <p>A brewery doesn't malt its own barley, a bakery doesn't mill its own flour.
+      Farmers buy one-year-old asparagus crowns, they don't sow them from seed. Fruiting,
+      packing and selling will always be local problems — and they will always rely on
+      local mushroom farms — but <strong>the target is to cost less than making your
+      own</strong>, including materials and labor. Right now I'm finishing development
+      testing, building the first prototypes of the machinery, and working through
+      National Science Foundation funding.</p>
     </div>
   </section>
 
   <section class="fade">
     <h2>How it works</h2>
     <div class="body">
-      <p>Three things at once.</p>
+      <p class="lede">Three things, and they only pay off together: a method that changes
+      what a block costs to make, machinery that exists because nothing off the shelf
+      does the job, and enough scale for either of those to matter.</p>
       <p><strong>A patent-pending method</strong> that redesigns how a block gets made.
-      I got into the microbiology side of
-      this early and never really got back out - specifically mycelial enzymatic
-      expression, which is a fancy way of saying the fungus already does a lot of the
-      work itself if you set things up right, so a farm ends up paying in labor and
-      process time for what the biology would do on its own. I spent about five years
-      chasing that, and somewhere in there it turned into a plan that runs 470 pages
-      with more than 500 sources behind it. The method that came out of it is patent
-      pending, filed July 2026. I'm finishing up development tests now to pin down what
-      the yield and the cost actually are, because I'd rather hand you a real number
-      than a hopeful one.</p>
+      I got into the microbiology side of this early and never really got back out -
+      specifically mycelial enzymatic expression, which is a fancy way of saying the
+      fungus already does a lot of the work itself if you set things up right, so a farm
+      ends up paying in labor and process time for what the biology would do on its own.
+      I spent about five years chasing that, and somewhere in there it turned into a plan
+      that runs 470 pages with more than 500 sources behind it. The method that came out
+      of it is patent pending, filed July 2026. I'm finishing up development tests now to
+      pin down what the yield and the cost actually are, because I'd rather hand you a
+      real number than a hopeful one.</p>
       <p><strong>Custom machinery.</strong> Several steps in substrate prep have no good
       equipment behind them, so they get done by hand. My work before this was
       contamination control in aerospace, on hypergolic propulsion systems, where a
       process that isn't clean enough doesn't fail politely. I'm using that background to
-      design machinery that is cheap to build, keeps contamination out, and scales.
-      Those machines are designed, and some of them are already prototyped.</p>
+      design machinery that is cheap to build, keeps contamination out, and scales. Those
+      machines are designed, and some of them are already prototyped.</p>
       <p><strong>Scale.</strong> Making blocks a thousand at a time costs less per block
       than making them a hundred at a time. Most farms that make their own are working a
       batch at a time, on equipment sized for a batch.<a class="src" href="#s2">2</a></p>
-    </div>
-  </section>
 
-  <section class="fade">
-    <h2>Questions</h2>
-    <div class="body">
-      <details>
-        <summary>When can I get one?</summary>
-        <p>Not this year. Bench work finishes first, then trials. The survey is how you
-        get into the first round of those.</p>
-      </details>
-      <details>
-        <summary>What species?</summary>
-        <p>Blue oyster first, then lion's mane and shiitake — the sawdust-block species.
-        Which one moves fastest after oyster depends partly on what growers tell me.</p>
-      </details>
-      <details>
-        <summary>Isn't buying blocks just what you do before you scale up?</summary>
-        <p>That's the honest objection, and it's the one I take most seriously - most
-        people who buy blocks are buying them on the way to making their own. A brewery
-        doesn't malt its own barley though, and a bakery doesn't mill its own flour.
-        Buying an input stops being a beginner move at the point where the person making
-        it is doing something you can't do as cheaply in your own building. That's the
-        whole bet, and it's a fair thing to hold me to.</p>
-      </details>
-      <details>
-        <summary>Who is this?</summary>
-        <p>Joey Hammond, in Colorado. Rocky Mountain Mushroom Farm LLC is a Colorado
-        company, formed 2025. <a href="about.html">More about me and how this
-        started &rarr;</a></p>
-      </details>
-      <div class="slot"><b>Asset slot — the block itself</b>
-        A photograph of a finished block, once there is one to photograph.
-        <i>When this exists it becomes the hero image and the page gets rebuilt around
-        it.</i></div>
-      <div class="slot"><b>Asset slot — bench photo</b>
-        Stage A vials on the rack, natural light.
-        <i>Highest-value image still missing: it makes "development testing is running"
-        something you can see rather than something you have to take my word for.</i></div>
       <figure class="plate">
         <img src="assets/paper.png" width="560" height="696" loading="lazy"
              alt="A fanned stack of pages from the technical plan">
         <figcaption>The plan. 470 pages, more than 500 sources.</figcaption>
       </figure>
       <div class="todo"><b>Replace this image before launch</b>
-        This is a generated mockup, not the real thing. Regenerate it from a
-        full-resolution screenshot of an actual page:
-        <i>python paper_mockup.py &lt;page.png&gt; — then resize to 560px and drop it in
-        as assets/paper.png. Ideally a mycology page with figures on it.</i></div>
+        A generated mockup, not the real thing. Regenerate from a full-resolution
+        screenshot of an actual page.
+        <i>python paper_mockup.py &lt;page.png&gt; — then resize to 560px wide and drop
+        it in as assets/paper.png. Ideally a mycology page with figures on it.</i></div>
+
+      <div class="slot"><b>Asset slot — bench photo</b>
+        Stage A vials on the rack, natural light.
+        <i>Highest-value image still missing: it makes "development testing is running"
+        something you can see rather than something you have to take my word for.</i></div>
+      <div class="slot"><b>Asset slot — the block itself</b>
+        A photograph of a finished block, once there is one to photograph.
+        <i>When this exists it becomes the hero image and the page gets rebuilt around
+        it.</i></div>
     </div>
   </section>
 
@@ -381,12 +151,49 @@
       <a href="mailto:hello@rockymountainmushroomfarm.com">hello@rockymountainmushroomfarm.com</a></p>
   </div>
 
-  <!-- ── Sources. DRAFT ONLY: `body.clean` hides both these entries and the little
-       superscript markers in the prose, on exactly the same gate as the asset slots
-       above. So you can audit every load-bearing number on this page by opening it
-       locally (or with ?draft=1), and a grower never sees a footnote apparatus on what
-       is supposed to be a one-page introduction. Rule for anything added here: a number
-       on this page either carries a marker, or it comes out. ── */ -->
+  <!-- Questions sit BELOW the survey (owner, 2026-08-03). Someone who is going to answer
+       should meet the ask before the objection handling; someone who wants more first can
+       scroll past it. -->
+  <section class="fade">
+    <h2>Questions</h2>
+    <div class="body">
+      <div class="todo"><b>⬖ Owner: pick the FAQs</b>
+        A menu of candidates is in <b>FAQ_OPTIONS.md</b> in this folder. Say which
+        numbers and they go straight in.
+        <i>The four below are the ones that are safe and useful whichever others you
+        choose, so the section is never empty while you decide.</i></div>
+      <details>
+        <summary>When can I get one?</summary>
+        <p>Not this year. Bench work finishes first, then trials. The survey is how you
+        get into the first round of those.</p>
+      </details>
+      <details>
+        <summary>What species?</summary>
+        <p>Blue oyster first, then lion's mane and shiitake — the sawdust-block species.
+        Which one moves fastest after oyster depends partly on what growers tell me.</p>
+      </details>
+      <details>
+        <summary>Isn't buying blocks just what you do before you scale up?</summary>
+        <p>That's the honest objection, and it's the one I take most seriously — most
+        people who buy blocks are buying them on the way to making their own. Buying an
+        input stops being a beginner move at the point where the person making it is
+        doing something you can't do as cheaply in your own building. That's the whole
+        bet, and it's a fair thing to hold me to.</p>
+      </details>
+      <details>
+        <summary>Who is this?</summary>
+        <p>Joey Hammond, in Colorado. Rocky Mountain Mushroom Farm LLC is a Colorado
+        company, formed 2025. <a href="about.html">More about me and how this
+        started &rarr;</a></p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Sources. DRAFT ONLY: `body.clean` hides these entries and the superscript markers
+       in the prose, on the same gate as the asset slots. A grower reading a one-page
+       introduction should not meet a footnote apparatus; the owner checking whether a
+       number is real should. Rule for anything added here: a number on this page either
+       carries a marker, or it comes out. -->
   <section class="sources fade" id="sources">
     <h2>Sources (draft)</h2>
     <div class="body">
@@ -394,25 +201,27 @@
         <li id="s1"><a href="https://smallfarms.cornell.edu/2022/09/specialty-mushroom-grower-survey/">Cornell
           Dyson EB 2022-13, <i>Specialty Mushroom Grower Survey</i></a> (n=139, Jan 2021).
           Ranked growth barriers: labor 49.2%, production facilities 46.6%, growing output
-          to meet demand 46.6%. 64% report more demand than they can supply.
-          <i>Verified 2026-07-31.</i></li>
+          to meet demand 46.6%. <i>Verified 2026-07-31.</i></li>
         <li id="s2"><a href="https://smallfarms.cornell.edu/resources/indoor-production/indoor-mushroom-grower-scenario-research-report/">Cornell
           Small Farms, <i>Indoor Mushroom Grower Scenario Research Report</i></a> (5 farms,
           NE-SARE). Verbatim: <q>blocks on site at about 20% materials and 80% labor,
           while ready to fruit block farms have a higher material cost at 58% and labor
           being 42%.</q> The five farms ran 16, 24, 90, 117 and 313 blocks a week.
           <i>Verified 2026-08-02.</i></li>
-        <li id="s3">Same report and Cornell's indoor-production guidance: <q>There is
-          typically an 8&ndash;12 week window between buying the blocks and being paid for
-          the mushrooms.</q> <i>Verified 2026-07-31.</i></li>
+        <li id="s3">Retired 2026-08-03. This entry carried Cornell's 8&ndash;12 week gap
+          between paying for blocks and being paid for mushrooms. RMMF's own 87,110-message
+          grower corpus found <b>zero support for it across eleven slices</b>, with real
+          receivables at 7&ndash;30 days, so the FAQ that cited it came off the page. Kept
+          here as the record of a claim that was checked and dropped rather than quietly
+          deleted.</li>
       </ol>
-      <p class="quiet"><b>Claims on this page with no marker, and why:</b> the ~470-page
+      <p class="quiet"><b>Claims on this page with no marker, and why:</b> the 470-page
       plan / 500+ sources and the July 2026 provisional are RMMF's own records, checkable
-      on request but not published. &ldquo;About five years of testing&rdquo; and the
-      aerospace background rest on my own account (owner decisions D1 and D2). The machinery
-      is described as designed-and-partly-prototyped, which is the current state, not a
-      claim about performance. There is no yield, contamination or price number anywhere on
-      this page, deliberately, because the bench campaign has not produced one yet.</p>
+      on request but not published. &ldquo;About five years&rdquo; and the aerospace
+      background rest on my own account (owner decisions D1 and D2). The machinery is
+      described as designed-and-partly-prototyped, which is the current state, not a
+      claim about performance. There is no yield, contamination or price number anywhere
+      on this page, deliberately, because the bench campaign has not produced one yet.</p>
     </div>
   </section>
 
@@ -427,38 +236,7 @@
  </div>
 </div>
 
-<script>
-(function(){
-  // Asset slots: on when you are reviewing the page, off when a grower is reading it.
-  // A visitor who lands on the live URL must never be shown a list of the page's own
-  // unevidenced claims, so a real host hides them unless ?draft=1 says otherwise.
-  var q = new URLSearchParams(location.search);
-  var mine = location.protocol === 'file:' || /^(localhost|127\.|\[::1\])/.test(location.hostname);
-  if (!(q.has('draft') || (mine && !q.has('clean')))) document.body.classList.add('clean');
-
-  // Card QR carries ?src=card, kept so it survives a hop to the survey page.
-  var src = new URLSearchParams(location.search).get('src');
-  if (src) {
-    try { sessionStorage.setItem('rmmf_src', src); } catch(e){}
-    var s = document.querySelector('a.btn');
-    if (s) s.href = 'survey.html?src=' + encodeURIComponent(src);
-  }
-
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:0.1});
-    document.querySelectorAll('.fade').forEach(function(el){ io.observe(el); });
-  } else {
-    document.querySelectorAll('.fade').forEach(function(el){ el.classList.add('in'); });
-  }
-
-  // The bioreactor clip lives on about.html now (owner, 2026-08-02: the origin story
-  // moved off the home page), so this page carries no video at all.
-})();
-</script>
-
+<script src="assets/site.js"></script>
 <!-- Cloudflare Web Analytics. Free, cookieless, no consent banner needed.
      Token supplied by the owner 2026-08-03. Same line on all three pages. -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
